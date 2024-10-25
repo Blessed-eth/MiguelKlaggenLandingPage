@@ -1,0 +1,35 @@
+
+  
+  section .scrolling-text {
+    font-family: 'Raleway';
+    font-size: 50px;
+    color: white;
+    line-height: 1.2;
+  }
+  
+  section p {
+    color: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    background-image: linear-gradient(90deg, white, white);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-clip: text;
+    animation: scroll-reveal linear forwards;
+    animation-timeline: view();
+    animation-range-start: 25vh;
+    animation-range-end: 90vh;
+  }
+  
+  @keyframes scroll-reveal {
+    25% {
+      opacity: 1;
+    }
+    50%, 60% {
+      opacity: 1;
+      background-size: 100% 100%;
+    }
+    100% {
+      opacity: 0;
+      background-size: 100% 100%;
+    }
+  }
