@@ -31,6 +31,9 @@
           'sm-custom': '550px', // Start at 550px
           'md-custom': '768px' // End at 768px
         },
+        colors: {
+          customPurple: '#451c71', // Custom color
+        },
       },
     },
   }
@@ -38,13 +41,14 @@
 
   <!--  Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-black text-white overflow-x-hidden">
 
 
 <!-- Full-screen Overlay Menu -->
-<div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 z-30" style="display: none;">
+<div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 z-30" style="display: none; pointer-events: none">
   <!-- Close Button -->
   <button id="closeButton" class="absolute top-10 right-20 text-white text-3xl cursor-pointer focus:outline-none">×</button>
 
@@ -78,8 +82,8 @@
     <div class="flex items-center space-x-4 mr-20">
       
       <!-- BTC Price Section -->
-      <section id="btc-price-section" class="text-white mr-10 relative text-sm md:text-base">
-        <span id="btc-price-value">0.00 BTC/CLP</span>
+      <section id="btc-price-section" class="text-white ml-10 mt-5 lg:mr-10 relative text-sm md:text-base">
+        <span id="btc-price-value"> BTC/CLP</span>
       </section>
       
       <!-- Hamburger Menu Button -->
@@ -217,7 +221,7 @@
     </section>
 
     <!-- CTA Button -->
-    <a href="#contacto" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
+    <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
       Hablemos de Bitcoin
     </a>
 
@@ -234,7 +238,7 @@
 <div class="shared-background-wrapper">
 
 <!-- Timeline Section -->
-<div id="cd-timeline" class="relative py-16 timeline-section"> 
+<div id="cd-timeline" class="relative py-16 mt-20 timeline-section"> 
     
   <!-- Central vertical line -->
   <div class="absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-1 bg-white"></div>
@@ -247,7 +251,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 sm:mt-20 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 2rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Certificación Profesional en Bitcoin por C4</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -258,7 +262,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right" style="margin-top: 6rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Certificación en Dinero Digital Descentralizado</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -269,7 +273,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 4rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Más de 10 años de experiencia en Bitcoin y Blockchain</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -280,7 +284,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Pionero en construir comunidad de criptotecnologías en Chile</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -291,7 +295,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 8rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Instalación del primer cajero automático de Bitcoin en Chile</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -302,7 +306,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Creación de Trans₿IT, primera pasarela P2P transfronteriza de pagos en Bitcoin</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -313,7 +317,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 8rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Cofundador y Presidente de la Asociación Chilena de Criptotecnologías (ONG Bitcoin Chile)</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
@@ -324,7 +328,7 @@
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
       <h2 class="text-lg md:text-xl font-bold text-white">Cofundador de Alianza Blockchain Iberoamérica</h2>
-      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 </div>
@@ -356,7 +360,7 @@
         <p class="text-lg mt-4 text-white-300 custom-paragraph">¿Estás interesado en adquirir <br>Bitcoin pero no <br>sabes por dónde empezar?</p>
 
         <!-- CTA Button -->
-        <a href="custom-url-here" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+        <a href="https://miguelklagges.com/2024/10/25/blog-1/" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
           Leer más
         </a>
       </div>
@@ -368,67 +372,64 @@
 <!-- Parent container with shared background for Wallet Choice and Fund Recovery -->
 <div class="shared-background-wrapper" id="parent2">
 
-<!-- Wallet Choice Section -->
-<section id="wallet-choice" class="relative text-white py-16">
-  <div class="container mx-auto flex items-center">
-    <!-- Text Section on the Left -->
-    <div class="w-1/2 ml-20 text-left px-8">
-      <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold leading-none" style="font-family: 'Oswald', sans-serif;">
-        Como escoger una <br> Billetera Crypto
-      </h2>
-      <p class="text-lg text-white mt-4">
-        ¿Sabías que elegir la billetera correcta puede ser la clave <br>para proteger tus criptos? Descubre cual es la mejor opción para ti.
-      </p>
+  <!-- Wallet Choice Section -->
+  <section id="wallet-choice" class="relative bg-customPurple bg-opacity-70 text-white py-16">
+    <div class="container mx-auto flex items-center">
+      
+      <!-- Text Section on the Left -->
+      <div class="w-1/2 ml-20 text-left px-8">
+        <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold leading-none" style="font-family: 'Oswald', sans-serif;">
+          Como escoger una <br> Billetera Crypto
+        </h2>
+        <p class="text-lg text-white mt-4">
+          ¿Sabías que elegir la billetera correcta puede ser la clave <br>para proteger tus criptos? Descubre cual es la mejor opción para ti.
+        </p>
 
-      <!-- CTA Button -->
-      <a href="custom-url-here" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
-        Leer más
-      </a>
+        <!-- CTA Button -->
+        <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="cta-button mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+          Leer más
+        </a>
+      </div>
+
+      <!-- Spline Animation Section with Fallback on the Right -->
+      <div id="cubesanimation" class="w-1/2 h-[500px] relative" style="pointer-events: none;">
+        <!-- Fallback Image, shown by default -->
+        <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/wallet-choice-animation.webp" alt="Wallet Choice Placeholder" id="wallet-fallback-image" class="w-full h-auto">
+
+        <!-- Spline Viewer for 3D animation, initially hidden -->
+        <spline-viewer loading-anim-type="spinner-small-light" 
+                       url="https://prod.spline.design/RNh1VXPQ4JHEYQUM/scene.splinecode"
+                       id="wallet-animation" class="w-full h-[500px] hidden" style="pointer-events: none;"></spline-viewer>
+      </div>
     </div>
+  </section>
 
-    <!-- Spline Animation Section with Fallback on the Right -->
-    <div id="cubesanimation" class="w-1/2 h-[500px] relative">
-      <!-- Fallback Image, shown by default -->
-      <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/wallet-choice-animation.webp" alt="Wallet Choice Placeholder" 
-           id="wallet-fallback-image" class="w-full h-auto">
+  <!-- Fund Recovery Section -->
+  <section id="fund-recovery" class="relative py-16 timeline-section">
+    <div class="container mx-auto flex items-center">
 
-      <!-- Spline Viewer for 3D animation, initially hidden -->
-      <spline-viewer loading-anim-type="spinner-small-light" 
-                     url="https://prod.spline.design/RNh1VXPQ4JHEYQUM/scene.splinecode"
-                     id="wallet-animation" class="w-full h-[500px] hidden"></spline-viewer>
+      <!-- Spline Animation Section with Fallback on the Left -->
+      <div id="dollarsanimation" class="w-1/2 relative" style="pointer-events: none;">
+        <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/fund-recovery-animation.webp" alt="Fund Recovery Placeholder" id="fund-fallback-image" class="w-full h-auto">
+        <spline-viewer loading-anim-type="spinner-small-light" 
+                       url="https://prod.spline.design/w0QQmGNLdGpp02rp/scene.splinecode"
+                       id="fund-animation" class="w-full h-[500px] hidden" style="pointer-events: none;"></spline-viewer>
+      </div>
+
+      <!-- Text Section on the Right -->
+      <div class="w-1/2 text-left px-4 relative">
+        <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold leading-none" style="font-family: 'Oswald', sans-serif;">
+          Recuperación de <br> fondos extraviados
+        </h2>
+        <p class="text-lg text-white mt-4">¿Perdiste acceso a tus fondos o criptomonedas? Te ayudamos a recuperarlos.</p>
+
+        <!-- Call to Action Button -->
+        <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="cta-button mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+          Recuperar fondos
+        </a>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- Fund Recovery Section -->
-<section id="fund-recovery" class="relative py-16 timeline-section">
-  <div class="container mx-auto flex items-center">
-    <!-- Spline Animation Section with Fallback on the Left -->
-    <div id="dollarsanimation" class="w-1/2 relative">
-      <!-- Fallback Image, shown by default -->
-      <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/fund-recovery-animation.webp" alt="Fund Recovery Placeholder" 
-           id="fund-fallback-image" class="w-full h-auto">
-
-      <!-- Spline Viewer for 3D animation, initially hidden -->
-      <spline-viewer loading-anim-type="spinner-small-light" 
-                     url="https://prod.spline.design/w0QQmGNLdGpp02rp/scene.splinecode"
-                     id="fund-animation" class="w-full h-[500px] hidden"></spline-viewer>
-    </div>
-
-    <!-- Text Section on the Right -->
-    <div class="w-1/2 text-left px-4 relative">
-      <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold leading-none" style="font-family: 'Oswald', sans-serif;">
-        Recuperación de <br> fondos extraviados
-      </h2>
-      <p class="text-lg text-white mt-4">¿Perdiste acceso a tus fondos o criptomonedas? Te ayudamos a recuperarlos.</p>
-
-      <!-- Call to Action Button -->
-      <a href="#contacto" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
-        Recuperar fondos
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 </div>
 
 <!-- Blockchain Section with Parallax Background -->
@@ -467,13 +468,23 @@
                        style="pointer-events: none; display: none;"></spline-viewer>
       </div>
 
-      <a href="#learn-more" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+      <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
         Aprende más sobre Blockchain
       </a>
     </div>
   </div>
 </section>
 
+<script>
+  document.querySelectorAll('.cta-button').forEach(button => {
+  button.addEventListener('click', (event) => {
+    console.log('CTA button clicked:', event.target);
+  });
+});
+document.addEventListener('click', (event) => {
+  console.log('Element clicked:', event.target);
+});
+</script>
 
 <!-- Footer -->
 <footer id="contact-form" class="bg-black opacity-0.5 py-8 text-white">
@@ -534,7 +545,6 @@
 <script src="js/videoLazyLoad.js"></script>
 <script src="js/smoothImageTextLoad.js"></script>
 <script src="js/bio.js"></script>
-<script src="js/main.js"></script>
 <script src="js/menuToggle.js"></script>
 
 <!-- Timeline Animation Script (ensure it's loaded last) -->
@@ -575,6 +585,44 @@
   }, 2500); // Delay ensures image fades in first
 });
 </script>
+
+<script>
+  function initBTCPrice() {
+  const fallbackPrice = 25000000; // Set a default/fallback BTC price in CLP
+
+  async function fetchBTCPrice() {
+    const priceElement = document.getElementById('btc-price-value');
+
+    try {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=clp');
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+      const data = await response.json();
+      const btcPrice = data.bitcoin.clp;
+
+      displayPrice(btcPrice);
+    } catch (error) {
+      console.error('Error fetching BTC price, using fallback:', error);
+      displayPrice(fallbackPrice); // Use the fallback price if the API request fails
+    }
+  }
+
+  function displayPrice(price) {
+    const priceElement = document.getElementById('btc-price-value');
+    priceElement.textContent = new Intl.NumberFormat('es-CL', {
+      style: 'currency',
+      currency: 'CLP'
+    }).format(price);
+
+    priceElement.classList.add('fade-in');
+    setTimeout(() => priceElement.classList.remove('fade-in'), 500);
+  }
+
+  fetchBTCPrice();
+  setInterval(fetchBTCPrice, 60000); // Fetch every 60 seconds
+}
+</script>
+
 </body>
 
 </html>

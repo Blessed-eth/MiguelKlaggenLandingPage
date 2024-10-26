@@ -1,0 +1,20 @@
+body *:not(#mobileMenu):not(header) {
+    z-index: 1;
+  }
+/* Ensure buttons are above other content */
+a.bg-yellow-500 {
+  position: relative; /* Ensures the button is on top of background layers */
+  z-index: 10; /* Increases z-index to prevent it from being covered */
+}
+
+/* Ensure only specific elements have pointer-events: none */
+#cubesanimation, #dollarsanimation, #wallet-fallback-image, #fund-fallback-image, spline-viewer {
+    pointer-events: none; /* Non-interactive elements only */
+  }
+  
+  /* Ensure CTA buttons remain clickable */
+  .cta-button {
+    pointer-events: auto !important; /* Enable pointer events on buttons */
+    position: relative;   /* Increase z-index relative to other elements */
+  }
+ 

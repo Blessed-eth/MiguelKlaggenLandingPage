@@ -1,147 +1,163 @@
 /* Header Container Styling */
 header, nav {
-    max-width: 100vw;
-  }
-  
-  /* Burger Menu Button Styles */
-  #burgermenu {
-    z-index: 1001 !important; /* Higher than the overlay */
-    margin: auto;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .hamburger {
-    position: fixed; /* Keeps it at a fixed position */
-    z-index: 1001; /* Ensures it’s above the overlay */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .hamburger .bar {
-    height: 4px;
-    width: 100%;
-    background-color: #fff;
-    transition: all 0.3s ease-out;
-  }
-  
-  .hamburger .bar:nth-of-type(2) {
-    margin: 8px 0;
-  }
-  
-  .hamburger.is-open .bar:nth-of-type(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  
-  .hamburger.is-open .bar:nth-of-type(2) {
-    opacity: 0;
-  }
-  
-  .hamburger.is-open .bar:nth-of-type(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-  
-  /* Overlay Menu Styling */
-  .menu-overlay {
-    display: none; /* Hidden by default */
-    z-index: 30; /* Ensures it's on top of other elements */
-  }
-  
-  .menu-overlay.is-active {
-    left: 0;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .menu-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .menu-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .menu-container ul li {
-    margin: 16px 0;
-  }
-  
+  max-width: 100vw;
+}
+
+/* Burger Menu Button Styles */
+#burgermenu {
+  z-index: 1001 !important; /* Higher than the overlay */
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.hamburger {
+  position: fixed; /* Keeps it at a fixed position */
+  z-index: 1001; /* Ensures it’s above the overlay */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger .bar {
+  height: 4px;
+  width: 100%;
+  background-color: #fff;
+  transition: all 0.3s ease-out;
+}
+
+.hamburger .bar:nth-of-type(2) {
+  margin: 8px 0;
+}
+
+.hamburger.is-open .bar:nth-of-type(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.is-open .bar:nth-of-type(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open .bar:nth-of-type(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Overlay Menu Styling */
+.menu-overlay {
+  display: none; /* Hidden by default */
+  z-index: 30; /* Ensures it's on top of other elements */
+}
+
+.menu-overlay.is-active {
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-container ul li {
+  margin: 16px 0;
+}
+
+/* Initial state: hidden */
+#mobileMenu {
+  display: none; /* Hide by default */
+  opacity: 0;
+  pointer-events: none; /* Prevent interference */
+  z-index: -1; /* Keep behind other elements */
+  transition: opacity 0.3s ease;
+}
+
+#mobileMenu.show {
+  display: block; /* Show only when active */
+  opacity: 1;
+  pointer-events: auto; /* Enable pointer events when shown */
+  z-index: 1000; /* Bring it to the top when visible */
+}
+
+.menu-container ul li a {
+  font-family: 'Raleway', sans-serif; /* Uses Raleway Thin */
+  font-weight: 100; /* Thin weight */
+  font-size: 2rem; /* Default size */
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Responsive Font Size for Burger Menu */
+@media (max-width: 768px) {
   .menu-container ul li a {
-    font-family: 'Raleway', sans-serif; /* Uses Raleway Thin */
-    font-weight: 100; /* Thin weight */
-    font-size: 2rem; /* Default size */
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 1.5rem; /* Adjust for smaller screens */
   }
-  
-  /* Responsive Font Size for Burger Menu */
-  @media (max-width: 768px) {
-    .menu-container ul li a {
-      font-size: 1.5rem; /* Adjust for smaller screens */
-    }
+}
+
+@media (max-width: 480px) {
+  .menu-container ul li a {
+    font-size: 1.25rem; /* Further reduce for very small screens */
   }
-  
-  @media (max-width: 480px) {
-    .menu-container ul li a {
-      font-size: 1.25rem; /* Further reduce for very small screens */
-    }
-  }
-  
-  /* BTC Counter Styling */
-  .btc-price-section {
-    display: flex;
-    align-items: center;
-    text-white;
-  }
-  
+}
+
+/* BTC Counter Styling */
+.btc-price-section {
+  display: flex;
+  align-items: center;
+  text-white;
+}
+
+.btc-counter {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Responsive adjustments for BTC counter font size */
+@media (max-width: 640px) {
   .btc-counter {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 0.6rem;
   }
-  
-  /* Responsive adjustments for BTC counter font size */
-  @media (max-width: 640px) {
-    .btc-counter {
-      font-size: 0.6rem;
-    }
-    #burgermenu svg {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+  #burgermenu svg {
+    width: 1.5rem;
+    height: 1.5rem;
   }
-  
-  @media (max-width: 768px) {
-    .btc-price-section {
-      margin-right: 1rem;
-    }
+}
+
+@media (max-width: 768px) {
+  .btc-price-section {
+    margin-right: 1rem;
   }
-  
-  /* Minimalist styling for the BTC/CLP price */
-  #btc-price, #btc-price-value {
-    font-size: 1rem;
-    font-family: 'Orbitron', sans-serif;
-    display: inline-block;
-    position: relative;
-    color: white;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  /* Menu Visibility Toggle */
-  .menu {
-    z-index: 1000; /* Lower than the burger menu */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  .menu.is-visible {
-    opacity: 1;
-    visibility: visible;
-  }
+}
+
+/* Minimalist styling for the BTC/CLP price */
+#btc-price, #btc-price-value {
+  font-size: 1rem;
+  font-family: 'Orbitron', sans-serif;
+  display: inline-block;
+  position: relative;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Menu Visibility Toggle */
+.menu {
+  z-index: 1000; /* Lower than the burger menu */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu.is-visible {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,21 +1,25 @@
-function initMenuToggle() {
-    const burgerMenu = document.getElementById('burgermenu');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeButton = document.getElementById('closeButton');
-  
-    // Toggle mobile menu on burger menu click
-    burgerMenu.addEventListener('click', () => {
-      mobileMenu.style.display = 'flex';
-      setTimeout(() => {
-        mobileMenu.style.opacity = '1';
-      }, 10); 
-    });
-  
-    // Hide mobile menu on close button click
-    closeButton.addEventListener('click', () => {
-      mobileMenu.style.opacity = '0';
-      setTimeout(() => {
-        mobileMenu.style.display = 'none';
-      }, 300);
-    });
+const mobileMenu = document.getElementById('mobileMenu');
+const burgerMenu = document.getElementById('burgermenu');
+const closeButton = document.getElementById('closeButton');
+
+burgerMenu.addEventListener('click', () => {
+  if (mobileMenu.classList.contains('show')) {
+    mobileMenu.classList.remove('show');
+    setTimeout(() => {
+      mobileMenu.style.display = 'none'; // Hide completely after fade-out
+    }, 300); // Duration should match CSS transition time
+  } else {
+    console.log("Showing mobile menu");
+    mobileMenu.style.display = 'block'; // Show immediately
+    setTimeout(() => {
+      mobileMenu.classList.add('show'); // Fade in
+    }, 10); // Slight delay to allow display change to take effect
   }
+});
+
+closeButton.addEventListener('click', () => {
+  mobileMenu.classList.remove('show');
+  setTimeout(() => {
+    mobileMenu.style.display = 'none'; // Hide completely after fade-out
+  }, 300); // Duration should match CSS transition time
+});
