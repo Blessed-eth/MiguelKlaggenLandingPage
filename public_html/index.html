@@ -15,9 +15,15 @@
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            raleway: ['Raleway', 'sans-serif'],
+          },
           colors: {
             clifford: '#da373d',
-          }
+          },
+          screens: {
+        'xs': {'max': '640px'}, // Custom breakpoint for screens under 580px
+      }
         }
       }
     }
@@ -33,16 +39,74 @@
 
 
 <!-- Full-screen Overlay Menu -->
-<div id="mobileMenu" class="menu-overlay fixed inset-0 bg-black bg-opacity-90 hidden z-30">
-  <nav class="flex items-center justify-center h-full w-full">
-    <ul class="text-center space-y-6 text-2xl text-white leading-relaxed">
-      <li><a href="#home" class="hover:text-gray-400">Inicio</a></li>
-      <li><a href="#services" class="hover:text-gray-400">Servicios</a></li>
-      <li><a href="#about" class="hover:text-gray-400">Sobre mí</a></li>
-      <li><a href="#contact" class="hover:text-gray-400">Contacto</a></li>
-    </ul>
-  </nav>
+<div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 z-30" style="display: none;">
+  <!-- Close Button -->
+  <button id="closeButton" class="absolute top-10 right-20 text-white text-3xl cursor-pointer focus:outline-none">×</button>
+
+ <nav class="flex items-center justify-center h-full w-full">
+   <ul class="text-center space-y-6 text-2xl text-white leading-relaxed">
+     <li><a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="hover:text-gray-400 font-raleway font-medium">Blog</a></li>
+     <li><a href="#asistencia" id="asistButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Servicios</a></li>
+     <li><a href="#blockchain" id="blockButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Sobre Blockchain</a></li>
+     <li><a href="#contact-form" id="contactButton"class="scroll-link hover:text-gray-400 font-raleway font-medium">Contacto</a></li>
+   </ul>
+ </nav>
 </div>
+
+<style>
+ /* Enable smooth scrolling for all anchor links */
+ html {
+   scroll-behavior: smooth;
+ }
+</style>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  const burgerMenu = document.getElementById('burgerButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeButton = document.getElementById('closeButton');
+  const asistButton = document.getElementById('closeButton');
+  const blockButton = document.getElementById('blockButton');
+  const contactButton = document.getElementById('contactButton');
+  const triggers = [closeButton, asistButton, blockButton, contactButton]; // Adds closeButton and each menu link to the triggers
+
+  // Function to show menu with fade-in effect
+  function showMenu() {
+    mobileMenu.style.display = 'block';
+    setTimeout(() => {
+      mobileMenu.classList.remove('opacity-0');
+    }, 10); // Short delay to allow fade-in effect
+  }
+
+  // Function to hide menu with fade-out effect
+  function hideMenu() {
+    mobileMenu.classList.add('opacity-0');
+    setTimeout(() => {
+      mobileMenu.style.display = 'none';
+    }, 300); // Match transition duration
+  }
+
+  // Show menu when burger button is clicked
+  burgerMenu.addEventListener('click', showMenu);
+
+  // Hide menu when close button is clicked
+  triggers.addEventListener('click', hideMenu);
+
+  // Add click event to each menu link to hide menu and scroll smoothly
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault(); // Prevent default link action
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        hideMenu(); // Fade out menu after scrolling
+      }
+    });
+  });
+});
+</script>
 
 <!-- Navbar Container -->
 <header class="fixed top-0 left-0 w-full z-20 bg-black bg-opacity-50">
@@ -100,7 +164,7 @@
   <div class="relative z-10 flex justify-center items-end h-full"> <!-- Changed items-center to items-end -->
     <img id="hero-image" src="https://miguelklagges.com/wp-content/uploads/2024/10/miguel-1_nobackground.webp" 
          alt="Miguel Klagges" 
-         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 mt-0 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/2"> 
+         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 mt-0 xs:w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/2"> 
 </div>
   </div>
 </section>
@@ -148,10 +212,10 @@
   <div class="container mx-auto bio-section-content">
     <!-- Signature Image (absolutely positioned) -->
     <img src="https://miguelklagges.com/wp-content/uploads/2024/10/Miguel-Klagges_white_low-res-signature.png" alt="Miguel Klagges" 
-    class="absolute right-0 top-8 transform translate-y-0 mr-20 opacity-80 w-1/2 z-0">
+    class="absolute right-0 transform translate-y-0 mr-20 opacity-80 w-1/2 md:w-1/2 sm:w-1/2 sm:mb-20 xs:w-1/2 z-0">
 
     <!-- Scrolling Text in Bio Section -->
-    <section id="bio-text" class="scrolling-text ml-4">
+    <section id="bio-text" class="scrolling-text ml-4 opacity-90 ">
       <p class="text-xl md:text-lg lg:text-2xl">Soy Miguel Klagges,</p>
       <p class="text-xl md:text-lg lg:text-2xl">pionero en Bitcoin y Blockchain en Chile,</p>
       <p class="text-xl md:text-lg lg:text-2xl">con más de 10 años de experiencia</p>
@@ -191,9 +255,9 @@
 </style>
 
 <!-- Scrolling Text in Bio Section -->
-<section id="bio-text" class="scrolling-text relative ml-4 mt-20 z-10 mb-4">
-  <p class="text-xl md:text-lg lg:text-2xl scroll-text">Si estás interesado en descubrir cómo Bitcoin y Blockchain <br>pueden transformar el mundo, </p>
-  <p class="text-xl md:text-lg lg:text-2xl scroll-text">estás en el lugar adecuado.</p>
+<section id="bio-text2" class="scrolling-text2 relative ml-4 mt-20 z-10 mb-4">
+  <p class="text-xl md:text-lg lg:text-2xl scroll-text">Si estás interesado en descubrir cómo Bitcoin y Blockchain </p>
+  <p class="text-xl md:text-lg lg:text-2xl scroll-text">pueden transformar el mundo, estás en el lugar adecuado.</p>
   <p class="text-xl md:text-lg lg:text-2xl scroll-text">Mi objetivo es guiarte en este viaje, ofreciendo conocimientos claros</p>
   <p class="text-xl md:text-lg lg:text-2xl scroll-text">que hagan que esta tecnología sea accesible y beneficiosa para todos.</p>
 </section>
@@ -202,7 +266,7 @@
 
   <style>
     /* Adjust font size for high-density displays */
-    .scrolling-text p {
+    .scrolling-text p,.scrolling-text2 p,  {
       font-size: 20px !important;
       color: white !important;
       line-height: 1.4;
@@ -210,7 +274,7 @@
   
     @media only screen and (min-resolution: 2dppx) {
       /* Ensure visibility on high-density displays */
-      .scrolling-text p {
+      .scrolling-text p, .scrolling-text2 p, {
         font-size: 24px; /* Slightly larger font size for clarity */
         -webkit-transform: none; /* Prevent transform issues on iOS */
         transform: none;
@@ -220,7 +284,7 @@
   </style>
 
 <!-- Example CTA Button with fade-in class -->
-<a href="#contacto" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition opacity-0 fade-in-on-scroll">
+<a href="#contacto" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
   Hablemos de Bitcoin
 </a>
   <!-- Section Title -->
@@ -486,7 +550,7 @@
 
 
 <!-- Footer -->
-<footer class="bg-black opacity-0.5 py-8 text-white">
+<footer id="contact-form" class="bg-black opacity-0.5 py-8 text-white">
   <div class="container mx-auto px-4 flex flex-wrap">
     <!-- Left Section: Contact Form -->
     <div class="w-full md:w-1/3 mb-6 md:mb-0">
@@ -703,29 +767,27 @@
   
 <!-- JavaScript for Hamburger Menu Toggle -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-      const burgerMenu = document.getElementById('burgermenu');
-      const mobileMenu = document.getElementById('mobileMenu');
+ document.addEventListener('DOMContentLoaded', function () {
+  const burgerMenu = document.getElementById('burgermenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeButton = document.getElementById('closeButton');
 
-      if (!burgerMenu || !mobileMenu) {
-          console.error('Burger menu or mobile menu not found.');
-          return; // Exit if elements are not found
-      }
-
-      burgerMenu.addEventListener('click', function () {
-          console.log("Burger menu clicked");
-          mobileMenu.classList.toggle('hidden');  // Toggles visibility
-          burgerMenu.classList.toggle('is-open'); // For burger menu animation
-      });
-
-      // Close the mobile menu when clicking outside
-      document.addEventListener('click', function (event) {
-          if (!mobileMenu.contains(event.target) && !burgerMenu.contains(event.target)) {
-              mobileMenu.classList.add('hidden');
-              burgerMenu.classList.remove('is-open');
-          }
-      });
+  // Toggle mobile menu on burger menu click
+  burgerMenu.addEventListener('click', function () {
+    mobileMenu.style.display = 'flex';
+    setTimeout(() => {
+      mobileMenu.style.opacity = '1';
+    }, 10); // Small delay to ensure display change happens first
   });
+
+  // Hide mobile menu on close button click
+  closeButton.addEventListener('click', function () {
+    mobileMenu.style.opacity = '0';
+    setTimeout(() => {
+      mobileMenu.style.display = 'none';
+    }, 300); // Match the transition duration
+  });
+});
 </script>
 
 	</body>

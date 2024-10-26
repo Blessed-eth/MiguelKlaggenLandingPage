@@ -34,13 +34,7 @@
       transform: translateX(-100%);
     }
   }
-  .custom-bio-text {
-    color: white !important;
-    width: 100vw; /* Make sure the text takes up the full viewport width */
-    opacity: 1 !important;
-    z-index: 1000 !important;
-    font-size: 1rem !important; /* Increase font size for readability */
-  }
+
 /* Parent wrapper with shared background image for Wallet Choice and Fund Recovery */
 .shared-background-wrapper {
   position: relative;
@@ -365,6 +359,12 @@
 
 .bio-text p {
   will-change: opacity, transform;
+}
+
+.biot-text2 ,.biot-text2 p {
+  font-size: 20px !important;
+  color: white !important;
+  line-height: 1.4;
 }
 
 

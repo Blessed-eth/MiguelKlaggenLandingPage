@@ -33,10 +33,10 @@
 
 /* Clear Any Unwanted Animation States */
 .scroll-text {
-  opacity: 0; /* Only apply via Intersection Observer */
-  background-image: linear-gradient(90deg, white, white);
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-  background-clip: text;
-  transition: opacity 1.5s ease-in-out, background-size 1.5s ease-in-out;
+
+	background-image: linear-gradient(90deg, white, white);
+	background-size: 0% 100%;
+	background-repeat: no-repeat;
+	background-clip: text;
+	transition: opacity 1.5s ease-in-out, background-size 1.5s ease-in-out;
 }
