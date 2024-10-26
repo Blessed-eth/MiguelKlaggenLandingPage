@@ -1,0 +1,109 @@
+/* Timeline Section with Bottom Gradient */
+.timeline-section {
+    position: relative;
+    background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%); /* Full opacity at top, fading to transparent */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Bottom fade-out effect */
+  .timeline-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1vh; /* Adjust height as needed for the fade effect */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(0, 0, 0)); /* Transparent to black gradient */
+    z-index: 1;
+  }
+
+.custom-paragraph {
+  color: white;
+  margin-top: 20%;
+}
+
+/* Parent wrapper with background image and parallax */
+.shared-background-wrapper {
+  position: relative;
+  background-image: url('https://miguelklagges.com/wp-content/uploads/2024/10/3d-shapes-glowing-with-bright-holographic-colors-scaled.webp');
+  background-attachment: fixed; /* Parallax effect */
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+
+
+/* Adjust the spacing to ensure the sections are positioned well */
+#asistencia {
+  z-index: 1; /* Ensure it stays above the background */
+}
+
+#cd-timeline {
+  z-index: 1; /* Ensure it stays above the background */
+}
+
+ /* Asistencia Section */
+  /* Style for Asistencia Section */
+  .asistencia-section {
+    background-image: url('https://miguelklagges.com/wp-content/uploads/2024/10/3d-shapes-glowing-with-bright-holographic-colors-scaled.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: Adds a parallax effect */
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .asistencia-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+    z-index: -1;
+  }
+  
+  .custom-paragraph {
+    color: white;
+    margin-top: 20%; /* Adjust margin to give space */
+  }
+  
+  /* Parent wrapper with background image and parallax */
+  .shared-background-wrapper {
+    position: relative;
+    background-image: url('https://miguelklagges.com/wp-content/uploads/2024/10/3d-shapes-glowing-with-bright-holographic-colors-scaled.webp');
+    background-attachment: fixed; /* Parallax effect */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+  
+  
+  
+  /* Adjust the spacing to ensure the sections are positioned well */
+  #asistencia {
+    z-index: 1; /* Ensure it stays above the background */
+  }
+  
+  #cd-timeline {
+    z-index: 1; /* Ensure it stays above the background */
+  }
+  
+  /* Scroll-Reveal Keyframes */
+  @keyframes scroll-reveal {
+    25% {
+      opacity: 1;
+    }
+    50%, 60% {
+      opacity: 1;
+      background-size: 100% 100%;
+    }
+    100% {
+      opacity: 1;
+      background-size: 100% 100%; /* Keep it visible */
+    }
+  }

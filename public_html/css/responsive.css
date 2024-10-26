@@ -1,0 +1,131 @@
+/* General Responsive Adjustments */
+
+/* Global adjustments for small screens */
+body, html {
+    font-size: 90%; /* Slightly smaller base font size on mobile */
+    overflow-x: hidden;
+  }
+  
+  /* Header and Navbar */
+  @media (max-width: 768px) {
+    header {
+      padding: 0.5rem 1rem;
+    }
+  
+    #btc-price-value {
+      font-size: 0.8rem;
+    }
+  
+    /* Burger menu size adjustments */
+    .hamburger {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  
+    .menu-container ul li a {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .menu-container ul li a {
+      font-size: 1.25rem;
+    }
+  }
+  
+  /* Hero Section */
+  @media (max-width: 768px) {
+    .hero-section {
+      height: 60vh; /* Shorter height for mobile */
+    }
+  
+    #hero-text {
+      font-size: 2rem; /* Adjust font size for readability */
+    }
+  
+  }
+  @media (max-width: 480px) {
+    #hero-image {
+      width: 80%;
+    }
+  }
+  
+  /* Bio Section */
+  @media (max-width: 768px) {
+    .bio-section-content {
+      padding: 1rem;
+    }
+  
+    .bio-signature-image {
+      width: 50%; /* Smaller signature image */
+    }
+  
+    .scrolling-text p {
+      font-size: 1rem; /* Smaller font size for mobile */
+    }
+  }
+  
+  /* Timeline Section */
+  @media (max-width: 768px) {
+    .cd-timeline-content {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .cd-timeline-img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  /* Blockchain Section */
+  @media (max-width: 768px) {
+    #blockchain h2 {
+      font-size: 2rem;
+    }
+  
+    #blockchain p {
+      font-size: 0.9rem;
+    }
+  
+    #blockchain::before {
+      background-attachment: scroll;
+      background-size: cover;
+    }
+  }
+  
+  /* Footer */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-contact-form,
+    .footer-logo,
+    .footer-social-links {
+      margin: 0 auto 1rem;
+    }
+  
+    .footer-social-links a {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Hide 3D animations on mobile for performance */
+  @media (max-width: 480px) {
+    #bitcoin-animation,
+    #wallet-animation,
+    #fund-animation,
+    #blockchain-animation {
+      display: none;
+    }
+    #bitcoin-image-fallback,
+    #wallet-fallback-image,
+    #fund-fallback-image,
+    #blockchain-fallback-image {
+      display: block;
+    }
+  }

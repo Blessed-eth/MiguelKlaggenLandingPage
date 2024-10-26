@@ -1,0 +1,90 @@
+/* Blockchain Section Layout */
+#blockchain {
+    position: relative;
+    padding: 4rem 0;
+    background-color: #1a1a1a;
+    color: white;
+    overflow: hidden;
+  }
+  
+  /* Background Image with Parallax Effect */
+  #blockchain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/DSC4224-scaled.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.7;
+    z-index: -1;
+  }
+  
+  /* Content Container */
+  .blockchain-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  /* Headline Styling */
+  .blockchain-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Paragraph Text Styling */
+  .blockchain-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+  }
+  
+  /* Call-to-Action Button */
+  .blockchain-content a.cta-button {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .blockchain-content a.cta-button:hover {
+    background-color: #d97706;
+  }
+  
+  /* Animation for Fade-In Effect */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Responsive Background Adjustment */
+  @media (max-width: 768px) {
+    #blockchain::before {
+      background-attachment: scroll;
+      background-size: contain;
+    }
+  
+    .blockchain-content h2 {
+      font-size: 2rem;
+    }
+  
+    .blockchain-content p {
+      font-size: 0.9rem;
+    }
+  }

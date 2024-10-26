@@ -1,0 +1,117 @@
+/* Footer Layout */
+footer {
+    background-color: #000; /* Dark background for contrast */
+    padding: 2rem 0;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Footer Container for Flex Layout */
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Left Section - Contact Form */
+  .footer-contact-form {
+    flex: 1 1 100%; /* Full-width on smaller screens */
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .footer-contact-form input,
+  .footer-contact-form textarea,
+  .footer-contact-form button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #555;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .footer-contact-form button {
+    background-color: #f59e0b;
+    color: #000;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer-contact-form button:hover {
+    background-color: #d97706;
+  }
+  
+  /* Right Section - Logo and Social Media Links */
+  .footer-logo {
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-logo img {
+    height: 3rem;
+    max-width: 100%;
+  }
+  
+  .footer-social-links a {
+    color: white;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-social-links a:hover {
+    color: #d97706;
+  }
+  
+  /* Footer Bottom Text */
+  .footer-bottom-text {
+    font-size: 0.875rem;
+    color: #aaa;
+    margin-top: 1rem;
+  }
+  
+  /* Responsive Layout */
+  @media (min-width: 768px) {
+    .footer-container {
+      flex-direction: row;
+    }
+  
+    .footer-contact-form,
+    .footer-logo,
+    .footer-social-links {
+      flex: 1;
+      margin: 0;
+    }
+  
+    .footer-contact-form {
+      max-width: 250px;
+      order: 1;
+    }
+  
+    .footer-logo {
+      order: 2;
+    }
+  
+    .footer-social-links {
+      order: 3;
+      text-align: right;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer-contact-form,
+    .footer-logo,
+    .footer-social-links {
+      text-align: center;
+    }
+  
+    .footer-social-links {
+      font-size: 1rem;
+    }
+  }

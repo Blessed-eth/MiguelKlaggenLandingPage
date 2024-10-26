@@ -2,37 +2,42 @@
 <html lang="es" class="overflow-x-hidden">
 
 <head>
+  <!-- Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miguel Klagges - Blockchain Consultant</title>
 
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./bio-text.css">
-  
-  <!-- Import TailwindCSS and Google Fonts for Oswald -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            raleway: ['Raleway', 'sans-serif'],
-          },
-          colors: {
-            clifford: '#da373d',
-          },
-          screens: {
-        'xs': {'max': '640px'}, // Custom breakpoint for screens under 580px
-      }
-        }
-      }
-    }
-  </script>
-  
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!-- Section-Specific Styles -->
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="./css/hero.css">
+  <link rel="stylesheet" href="./css/bio.css">
+  <link rel="stylesheet" href="./css/timeline.css">
+  <link rel="stylesheet" href="./css/asistencia.css">
+  <link rel="stylesheet" href="./css/blockchain.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="stylesheet" href="./css/responsive.css">  
+
+  <!-- TailwindCSS CDN and Custom Configuration -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        screens: {
+          'xs': '460px', // Custom extra small screen breakpoint
+          'sm-custom': '550px', // Start at 550px
+          'md-custom': '768px' // End at 768px
+        },
+      },
+    },
+  }
+</script>
+
+  <!--  Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-  
-  <!-- jQuery (for timeline animations) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="bg-black text-white overflow-x-hidden">
@@ -59,54 +64,6 @@
    scroll-behavior: smooth;
  }
 </style>
-
-<script>
- document.addEventListener('DOMContentLoaded', function () {
-  const burgerMenu = document.getElementById('burgerButton');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const closeButton = document.getElementById('closeButton');
-  const asistButton = document.getElementById('closeButton');
-  const blockButton = document.getElementById('blockButton');
-  const contactButton = document.getElementById('contactButton');
-  const triggers = [closeButton, asistButton, blockButton, contactButton]; // Adds closeButton and each menu link to the triggers
-
-  // Function to show menu with fade-in effect
-  function showMenu() {
-    mobileMenu.style.display = 'block';
-    setTimeout(() => {
-      mobileMenu.classList.remove('opacity-0');
-    }, 10); // Short delay to allow fade-in effect
-  }
-
-  // Function to hide menu with fade-out effect
-  function hideMenu() {
-    mobileMenu.classList.add('opacity-0');
-    setTimeout(() => {
-      mobileMenu.style.display = 'none';
-    }, 300); // Match transition duration
-  }
-
-  // Show menu when burger button is clicked
-  burgerMenu.addEventListener('click', showMenu);
-
-  // Hide menu when close button is clicked
-  triggers.addEventListener('click', hideMenu);
-
-  // Add click event to each menu link to hide menu and scroll smoothly
-  menuLinks.forEach(link => {
-    link.addEventListener('click', function (event) {
-      event.preventDefault(); // Prevent default link action
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-        hideMenu(); // Fade out menu after scrolling
-      }
-    });
-  });
-});
-</script>
 
 <!-- Navbar Container -->
 <header class="fixed top-0 left-0 w-full z-20 bg-black bg-opacity-50">
@@ -150,148 +107,126 @@
   </video>
 
   <!-- Overlay -->
-  <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60"></div>
+  <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
 
-  <!-- Sliding Text (looping) -->
-  <div class="absolute  md:top-1/6 left-0 w-full h-full flex justify-center items-center overflow-hidden">
+   <!-- Sliding Text (looping) -->
+   <div class="absolute  md:top-1/6 left-0 w-full h-full flex justify-center items-center overflow-hidden">
     <div id="hero-text" class="font-bold text-white opacity-90 whitespace-nowrap text-scroll transition-opacity duration-1000 bg-gradient-to-r from-gray-100 to-gray-700 bg-clip-text mix-blend-overlay text-4xl md:text-[20rem] lg:text-[30rem]">
       <span class="mx-1 inline-block">El futuro es Bitcoiner</span>
       <span class="mx-1 inline-block">El futuro es Bitcoiner</span> <!-- Repeating for smooth scrolling -->
     </div>
   </div>
 
+  <style>
+    /* Slower sliding text animation */
+    @keyframes slideText {
+      0% {
+        transform: translateX(10%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  
+    /* Slower animation with larger text */
+    .text-scroll {
+      display: inline-block;
+      animation: slideText 55s linear infinite; 
+    }
+    .hero-text {
+      transform: translateX(80%);
+    }
+  
+    /* Fade-in for image and text */
+    .opacity-0 {
+      opacity: 0;
+    }
+  
+    .opacity-100 {
+      opacity: 1;
+    }
+  
+    .transition-opacity {
+      transition: opacity 1s ease-in-out;
+    }
+  </style>
+
   <!-- Main Image (initially hidden, will fade in) -->
-  <div class="relative z-10 flex justify-center items-end h-full"> <!-- Changed items-center to items-end -->
+  <div class="relative z-10 flex justify-center items-end h-full mt-0 xs:mt-0 sm:mt-10">
     <img id="hero-image" src="https://miguelklagges.com/wp-content/uploads/2024/10/miguel-1_nobackground.webp" 
          alt="Miguel Klagges" 
-         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 mt-0 xs:w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/2"> 
-</div>
+         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 xs:w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/2 md-custom:w-1/2"> 
+  </div>
   </div>
 </section>
-
-
-
-<!-- Add the following CSS for sliding text and fade-in -->
-<style>
-  /* Slower sliding text animation */
-  @keyframes slideText {
-    0% {
-      transform: translateX(10%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  /* Slower animation with larger text */
-  .text-scroll {
-    display: inline-block;
-    animation: slideText 55s linear infinite; 
-  }
-  .hero-text {
-    transform: translateX(80%);
-  }
-
-  /* Fade-in for image and text */
-  .opacity-0 {
-    opacity: 0;
-  }
-
-  .opacity-100 {
-    opacity: 1;
-  }
-
-  .transition-opacity {
-    transition: opacity 1s ease-in-out;
-  }
-</style>
 
 
 <!-- Bio Section -->
 <section class="bio-section text-left py-4 bg-grey relative mt-20">
   <div class="container mx-auto bio-section-content">
+    
     <!-- Signature Image (absolutely positioned) -->
-    <img src="https://miguelklagges.com/wp-content/uploads/2024/10/Miguel-Klagges_white_low-res-signature.png" alt="Miguel Klagges" 
-    class="absolute right-0 transform translate-y-0 mr-20 opacity-80 w-1/2 md:w-1/2 sm:w-1/2 sm:mb-20 xs:w-1/2 z-0">
+    <img src="https://miguelklagges.com/wp-content/uploads/2024/10/Miguel-Klagges_white_low-res-signature.png" 
+         alt="Miguel Klagges" 
+         class="bio-signature-image absolute right-0 transform translate-y-0 mr-20 opacity-80 w-1/2 md:w-1/2 sm:w-1/2 xs:w-1/2 z-0">
 
-    <!-- Scrolling Text in Bio Section -->
-    <section id="bio-text" class="scrolling-text ml-4 opacity-90 ">
-      <p class="text-xl md:text-lg lg:text-2xl">Soy Miguel Klagges,</p>
-      <p class="text-xl md:text-lg lg:text-2xl">pionero en Bitcoin y Blockchain en Chile,</p>
-      <p class="text-xl md:text-lg lg:text-2xl">con más de 10 años de experiencia</p>
-      <p class="text-xl md:text-lg lg:text-2xl">ayudando a empresas, emprendedores e instituciones</p>
-      <p class="text-xl md:text-lg lg:text-2xl">a implementar soluciones innovadoras de criptotecnologías.</p>
-    </section>
-  </div>
-
-<!-- Experience Video Section with Lazy Load -->
-<div class="experience-video relative z-10 w-full max-w-screen-lg mt-40 mx-auto" style="background: linear-gradient(to bottom, #717171, #03142D);">
-  <a href="https://www.youtube.com/watch?v=ji46KcgQRoo&ab_channel=LABITCONF" target="_blank">
-    <!-- Placeholder Image -->
-    <img id="video-placeholder" src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/LABITCONF_banner.webp" 
-         alt="Experience Placeholder" class="absolute top-0 left-0 w-full h-full object-cover z-20">
-
-    <!-- Video (Initially hidden under the placeholder) -->
-    <div class="relative pb-[56.25%] h-0 overflow-hidden">
-      <video id="experience-video" autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover hidden">
-        <source src="https://miguelklagges.com/wp-content/uploads/2024/10/MK_experience_video.webm" type="video/webm">
-        <source src="https://miguelklagges.com/wp-content/uploads/2024/10/MK-experience.mp4" type="video/mp4">
-        Tu navegador no soporta video.
-      </video>
-    </div>
-  </a>
-</div>
-
-<!-- CSS to Smoothly Hide the Placeholder -->
-<style>
-  #video-placeholder {
-    transition: opacity 0.5s ease;
-  }
-
-  .hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-</style>
-
-<!-- Scrolling Text in Bio Section -->
-<section id="bio-text2" class="scrolling-text2 relative ml-4 mt-20 z-10 mb-4">
-  <p class="text-xl md:text-lg lg:text-2xl scroll-text">Si estás interesado en descubrir cómo Bitcoin y Blockchain </p>
-  <p class="text-xl md:text-lg lg:text-2xl scroll-text">pueden transformar el mundo, estás en el lugar adecuado.</p>
-  <p class="text-xl md:text-lg lg:text-2xl scroll-text">Mi objetivo es guiarte en este viaje, ofreciendo conocimientos claros</p>
-  <p class="text-xl md:text-lg lg:text-2xl scroll-text">que hagan que esta tecnología sea accesible y beneficiosa para todos.</p>
+<!-- First Bio Section with Scroll Animation -->
+<section id="bio-text" class="scrolling-text space-y-2 text-left mx-auto">
+  <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
+    <span>Soy</span> <span>Miguel</span> <span>Klagges,</span>
+  </p>
+  <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
+    <span>pionero</span> <span>en</span> <span>Bitcoin</span> <span>y</span> <span>Blockchain</span> <span>en</span> <span>Chile,</span>
+  </p>
+  <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
+    <span>con</span> <span>más</span> <span>de</span> <span>10</span> <span>años</span> <span>de</span> <span>experiencia</span>
+  </p>
+  <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
+    <span>ayudando</span> <span>a</span> <span>empresas,</span> <span>emprendedores</span> <span>e</span> <span>instituciones</span>
+  </p>
+  <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
+    <span>a</span> <span>implementar</span> <span>soluciones</span> <span>innovadoras</span> <span>de</span> <span>criptotecnologías.</span>
+  </p>
 </section>
 
-</div>
+    <!-- Experience Video Section with Lazy Load -->
+    <div class="experience-video relative z-10 w-full max-w-screen-lg mt-40 mx-auto" style="background: linear-gradient(to bottom, #717171, #03142D);">
+      <a href="https://www.youtube.com/watch?v=ji46KcgQRoo&ab_channel=LABITCONF" target="_blank">
+        <!-- Placeholder Image -->
+        <img id="video-placeholder" src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/LABITCONF_banner.webp" 
+             alt="Experience Placeholder" class="absolute top-0 left-0 w-full h-full object-cover z-20">
 
-  <style>
-    /* Adjust font size for high-density displays */
-    .scrolling-text p,.scrolling-text2 p,  {
-      font-size: 20px !important;
-      color: white !important;
-      line-height: 1.4;
-    }
-  
-    @media only screen and (min-resolution: 2dppx) {
-      /* Ensure visibility on high-density displays */
-      .scrolling-text p, .scrolling-text2 p, {
-        font-size: 24px; /* Slightly larger font size for clarity */
-        -webkit-transform: none; /* Prevent transform issues on iOS */
-        transform: none;
-        visibility: visible;
-      }
-    }
-  </style>
+        <!-- Video (Initially hidden under the placeholder) -->
+        <div class="relative pb-[56.25%] h-0 overflow-hidden">
+          <video id="experience-video" autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
+            <source src="https://miguelklagges.com/wp-content/uploads/2024/10/MK_experience_video.webm" type="video/webm">
+            <source src="https://miguelklagges.com/wp-content/uploads/2024/10/MK-experience.mp4" type="video/mp4">
+            Tu navegador no soporta video.
+          </video>
+        </div>
+      </a>
+    </div>
 
-<!-- Example CTA Button with fade-in class -->
-<a href="#contacto" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
-  Hablemos de Bitcoin
-</a>
-  <!-- Section Title -->
-  <div class="container mx-auto text-center" style="position: relative; top: -10%;"> <!-- Adjust title 10% higher -->
-    <h2 class="text-[28px] mt-20 sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none" style="font-family: 'Oswald', sans-serif;">
-      Experiencia
-    </h2>
+    <!-- Second Bio Section with Scroll Animation -->
+    <section id="bio-text2" class="scrolling-text">
+      <p><span>Si</span> <span>estás</span> <span>interesado</span> <span>en</span> <span>descubrir</span> <span>cómo</span> <span>Bitcoin</span></p>
+      <p><span>puede</span> <span>transformar</span> <span>el</span> <span>mundo,</span> <span>estás</span> <span>en</span> <span>el</span> <span>lugar</span> <span>adecuado.</span></p>
+      <p><span>Mi</span> <span>objetivo</span> <span>es</span> <span>guiarte</span> <span>en</span> <span>este</span> <span>viaje,</span> <span>ofreciendo</span></p>
+      <p><span>conocimientos</span> <span>claros</span> <span>que</span> <span>hagan</span> <span>que</span> <span>esta</span> <span>tecnología</span></p>
+      <p><span>sea</span> <span>accesible</span> <span>y</span> <span>beneficiosa</span> <span>para</span> <span>todos.</span></p>
+    </section>
+
+    <!-- CTA Button -->
+    <a href="#contacto" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
+      Hablemos de Bitcoin
+    </a>
+
+    <!-- Section Title for Experience -->
+    <div class="container mx-auto text-center" style="position: relative; top: -10%;">
+      <h2 class="text-[28px] mt-20 sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none" style="font-family: 'Oswald', sans-serif;">
+        Experiencia
+      </h2>
+    </div>
   </div>
 </section>
 
@@ -300,97 +235,98 @@
 
 <!-- Timeline Section -->
 <div id="cd-timeline" class="relative py-16 timeline-section"> 
-  <!-- The central vertical line -->
+    
+  <!-- Central vertical line -->
   <div class="absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-1 bg-white"></div>
 
   <!-- Timeline Block 1 (left) -->
-  <div id="cardWrap" class="relative mb-16 cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full">
-    <div class="flex ml-20 items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
+  <div id="cardWrap" class="relative mb-16 sm:mb-24 cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full">
+    
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-20 left-1/2 transform -translate-x-1/2">
       <img src="https://miguelklagges.com/wp-content/uploads/2024/10/C4_logo.png" alt="C4 Logo" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left">
-      <h2 class="text-xl md:text-lg font-bold text-white">Certificación Profesional en Bitcoin por C4</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 sm:mt-20 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 2rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Certificación Profesional en Bitcoin por C4</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
-  <!-- Timeline Block 2 (right) -->
-  <div class="relative mb-16  cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full">
-    <div class="flex mr-20 items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
-      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/University_of_Nicosia_2017-1.png" alt="University of Nicosia" class="w-full h-full object-contain">
+   <!-- Timeline Block 2 (right) -->
+   <div class="relative mb-16 sm:mb-24 cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2">
+      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/university_logo.png" alt="University of Nicosia" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right">
-      <h2 class="text-xl md:text-lg font-bold text-white">Certificación en Dinero Digital Descentralizado</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right" style="margin-top: 6rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Certificación en Dinero Digital Descentralizado</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
-  <!-- Timeline Block 3 (left) -->
-  <div class="relative  mb-16 cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full">
-    <div class="flex ml-20 items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
-      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/favicon.webp" alt="Favicon" class="w-full h-full object-contain">
+   <!-- Timeline Block 3 (left) -->
+   <div class="cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full mb-16 sm:mb-24 relative">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2">
+      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/favicon-1.png" alt="Favicon" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left">
-      <h2 class="text-xl md:text-lg font-bold text-white">Más de 10 años de experiencia en Bitcoin y Blockchain</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 4rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Más de 10 años de experiencia en Bitcoin y Blockchain</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
   <!-- Timeline Block 4 (right) -->
-  <div class="relative mb-16 cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full">
-    <div class="flex mr-20 items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
-      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/flag-bitcoin-gold-coin-on-260nw-1862820766.webp" alt="Bitcoin Flag" class="w-full h-full object-contain">
+  <div class="cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full mb-16 sm:mb-24 relative">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2">
+      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/bitcoin-chile-3.png" alt="Bitcoin Flag" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right">
-      <h2 class="text-xl md:text-lg font-bold text-white">Pionero en construir comunidad de criptotecnologías en Chile</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Pionero en construir comunidad de criptotecnologías en Chile</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
   <!-- Timeline Block 5 (left) -->
-  <div class="relative mx-20 mb-16 cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full">
-    <div class="flex items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
+  <div class="cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full mb-16 sm:mb-24 relative">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2">
       <img src="https://miguelklagges.com/wp-content/uploads/2024/10/png-transparent-localbitcoins-cryptocurrency-exchange-bitcoin-atm-coinbase-bitcoin-text-orange-logo-thumbnail.png" alt="LocalBitcoins" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left">
-      <h2 class="text-xl md:text-lg font-bold text-white">Instalación del primer cajero automático de Bitcoin en Chile</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 8rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Instalación del primer cajero automático de Bitcoin en Chile</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
   <!-- Timeline Block 6 (right) -->
-  <div class="relative  mb-16 cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full">
-    <div class="flex mr-20 items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
-      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/Trans₿IT-Logo-low-e1729797621124.png" alt="TransBit" class="w-full h-full object-contain">
+  <div class="cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full mb-16 sm:mb-24 relative">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-8 left-1/2 transform -translate-x-1/2">
+      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/trans-bit-logo.png" alt="TransBit" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right">
-      <h2 class="text-xl md:text-lg font-bold text-white">Creación de Trans₿IT, primera pasarela P2P transfronteriza de pagos en Bitcoin</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Creación de Trans₿IT, primera pasarela P2P transfronteriza de pagos en Bitcoin</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
   <!-- Timeline Block 7 (left) -->
-  <div class="relative mx-20 mb-16 cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full">
-    <div class="flex items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
-      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/ongbtc_logo.png" alt="ONG Bitcoin Chile" class="w-full h-full object-contain">
+  <div class="cd-timeline-block flex flex-col items-center md:flex-row md:justify-end w-full mb-16 sm:mb-24 relative">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute -top-10 left-1/2 transform -translate-x-1/2">
+      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/ong-bit-logo.png" alt="ONG Bitcoin Chile" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left">
-      <h2 class="text-xl md:text-lg font-bold text-white">Cofundador y Presidente de la Asociación Chilena de Criptotecnologías (ONG Bitcoin Chile)</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 8rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Cofundador y Presidente de la Asociación Chilena de Criptotecnologías (ONG Bitcoin Chile)</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
 
   <!-- Timeline Block 8 (right) -->
-  <div class="relative mb-16 cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full">
-    <div class="flex mr-20 items-center justify-center w-20 h-20 rounded-full bg-white z-10 overflow-hidden transform -translate-y-[50%]">
+  <div class="cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full mb-16 mt-20 sm:mb-24 relative">
+    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
       <img src="https://miguelklagges.com/wp-content/uploads/2024/10/alianza_blockchain_cover-e1729797667632.jpeg" alt="Alianza Blockchain" class="w-full h-full object-contain">
     </div>
-    <div id="card" class="bg-gray-700 rounded-lg shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right">
-      <h2 class="text-xl md:text-lg font-bold text-white">Cofundador de Alianza Blockchain Iberoamérica</h2>
-      <p class="text-white mt-2 text-lg md:text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
+      <h2 class="text-lg md:text-xl font-bold text-white">Cofundador de Alianza Blockchain Iberoamérica</h2>
+      <p class="text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
-
 </div>
 
 <!-- Vertical Layout -->
@@ -538,16 +474,6 @@
   </div>
 </section>
 
-<style>
-/* Disable fixed background on mobile */
-@media (max-width: 768px) {
-  #blockchain .bg-fixed {
-    background-attachment: scroll; /* Default scrolling */
-    background-size: contain; /* Optimizes background image loading */
-  }
-}
-</style>
-
 
 <!-- Footer -->
 <footer id="contact-form" class="bg-black opacity-0.5 py-8 text-white">
@@ -600,196 +526,55 @@
   </div>
 </footer>
 
-<!-- Additional Styles -->
-<style>
-  .cd-timeline-block {
-    display: flex;
-    align-items: center; /* Aligns the circle with the block vertically */
-    justify-content: flex-start;
-  }
-  
-  .cd-timeline-block img {
-    object-fit: contain;
-  }
+<!-- External Libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
 
-  @media (max-width: 768px) {
-    .cd-timeline-block {
-      flex-direction: column;
-    }
-  }
-</style>
+<!-- Other Section-Specific Scripts -->
+<script src="js/btcPrice.js"></script>
+<script src="js/videoLazyLoad.js"></script>
+<script src="js/smoothImageTextLoad.js"></script>
+<script src="js/bio.js"></script>
+<script src="js/main.js"></script>
+<script src="js/menuToggle.js"></script>
 
-<!-- Style for mobile responsiveness, alignment, and logo adjustments -->
-<style>
-  @media (max-width: 768px) {
-    .cd-timeline-block .cd-timeline-img {
-      top: -40px; /* Move circle higher for mobile */
-    }
-    .cd-timeline-block .text-xl {
-      font-size: 1.25rem; /* Smaller font size for mobile */
-    }
-    .cd-timeline-block .text-lg {
-      font-size: 1rem; /* Smaller paragraph size for mobile */
-    }
-  }
+<!-- Timeline Animation Script (ensure it's loaded last) -->
+<script src="js/timeline.js"></script>
 
-
-  /* For desktop to center the circle properly */
-  .cd-timeline-img {
-    left: 50%; /* Keep circle in center for all screen sizes */
-    transform: translateX(-50%); /* Center horizontally */
-  }
-</style>
-
-<!-- CSS for Fade-In Animation -->
-<style>
-  .fade-in-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .fade-in-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .is-visible .fade-in-left, .is-visible .fade-in-right {
-    opacity: 1;
-    transform: translateX(0);
-  }
-</style>
-
-<!-- JavaScript to Trigger Fade-In on Scroll -->
+<!-- Inline Script for Bio Section Fade-in Animation -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const timelineBlocks = document.querySelectorAll('.cd-timeline-block');
-
+    const bioSections = document.querySelectorAll('.bio-section');
+  
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Stop observing once visible
         }
       });
-    }, {
-      threshold: 0.2,
-    });
-
-    timelineBlocks.forEach(block => {
-      observer.observe(block);
-    });
-  });
-</script>
-
-
-</script>
-<!-- Real Time BTC Price -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    async function fetchBTCPrice() {
-      try {
-        // Fetch data from CoinGecko API for BTC/CLP
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=clp');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        const btcPrice = data.bitcoin.clp; // Access the BTC price in CLP
-
-        // Get the price element
-        const priceElement = document.getElementById('btc-price-value');
-        
-        // Format and update the price
-        priceElement.textContent = new Intl.NumberFormat('es-CL', {
-          style: 'currency',
-          currency: 'CLP'
-        }).format(btcPrice);
-
-        // Optional fade animation
-        priceElement.classList.add('fade-in');
-        setTimeout(() => priceElement.classList.remove('fade-in'), 500);
-
-      } catch (error) {
-        console.error('Error fetching BTC price:', error);
-      }
-    }
-
-    // Fetch the price immediately and then every 15 seconds
-    fetchBTCPrice(); // Initial fetch
-    setInterval(fetchBTCPrice, 15000); // Fetch every 15 seconds
-  });
-</script>
-
-<!-- JavaScript for Lazy Loading the Video -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const video = document.getElementById('experience-video');
-    const placeholder = document.getElementById('video-placeholder');
-
-    // Event listener for when the video is ready to play
-    video.addEventListener('canplaythrough', function () {
-      // Hide the placeholder and show the video
-      placeholder.classList.add('hidden'); // Hide the placeholder
-      video.classList.remove('hidden');    // Show the video
-      video.play();                        // Start playing the video
-    });
-
-    // Start loading the video
-    video.load();
-  });
-</script>
+    }, { threshold: 0.1 });
   
+    bioSections.forEach((section) => observer.observe(section));
+  });
+</script>
 <script>
-// JavaScript for Smooth Image and Text Loading 
-
   document.addEventListener("DOMContentLoaded", function() {
-    const heroImage = document.getElementById('hero-image');
-    const heroText = document.getElementById('hero-text');
-    
-    // Fade in the main image first
-    setTimeout(function() {
-      heroImage.classList.add('opacity-100');
-    }, 1500); // 1.5s delay for image fade-in
-    
-    // Fade in the sliding text after the image, with a slight delay
-    setTimeout(function() {
-      heroText.classList.add('opacity-100');
-    }, 500); // 2.5s delay for text fade-in (after image has appeared)
-  });
+  const heroImage = document.getElementById('hero-image');
+  const heroText = document.getElementById('hero-text');
 
+  // Fade in the main image first
+  setTimeout(function() {
+    heroImage.classList.remove('opacity-0');
+    heroImage.classList.add('fade-in');
+  }, 1500); // 1.5s delay for image fade-in
 
-
-
-  </script>
-  
-<!-- JavaScript for Hamburger Menu Toggle -->
-<script>
- document.addEventListener('DOMContentLoaded', function () {
-  const burgerMenu = document.getElementById('burgermenu');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const closeButton = document.getElementById('closeButton');
-
-  // Toggle mobile menu on burger menu click
-  burgerMenu.addEventListener('click', function () {
-    mobileMenu.style.display = 'flex';
-    setTimeout(() => {
-      mobileMenu.style.opacity = '1';
-    }, 10); // Small delay to ensure display change happens first
-  });
-
-  // Hide mobile menu on close button click
-  closeButton.addEventListener('click', function () {
-    mobileMenu.style.opacity = '0';
-    setTimeout(() => {
-      mobileMenu.style.display = 'none';
-    }, 300); // Match the transition duration
-  });
+  // Fade in the sliding text after the image
+  setTimeout(function() {
+    heroText.classList.remove('opacity-0');
+    heroText.classList.add('fade-in');
+  }, 2500); // Delay ensures image fades in first
 });
 </script>
-
-	</body>
+</body>
 
 </html>
