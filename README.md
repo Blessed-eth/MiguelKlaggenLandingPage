@@ -1,2 +1,0 @@
-# MiguelKlaggenLandingPage
-Client landingpage
