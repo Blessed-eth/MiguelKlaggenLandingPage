@@ -54,10 +54,10 @@
     </div>
     
     <!-- Right Section (BTC Counter & Burger Menu) -->
-    <div class="flex items-center space-x-4 ml-auto">
+    <div class="flex items-center space-x-4 mr-20">
       
       <!-- BTC Price Section -->
-      <section id="btc-price-section" class="text-white mr-5 text-sm md:text-base">
+      <section id="btc-price-section" class="text-white mr-10 relative text-sm md:text-base">
         <span id="btc-price-value">0.00 BTC/CLP</span>
       </section>
       
@@ -100,7 +100,8 @@
   <div class="relative z-10 flex justify-center items-end h-full"> <!-- Changed items-center to items-end -->
     <img id="hero-image" src="https://miguelklagges.com/wp-content/uploads/2024/10/miguel-1_nobackground.webp" 
          alt="Miguel Klagges" 
-         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 mt-0 md:mt--10 lg:w-1/3"> <!-- Removed top margin -->
+         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 mt-0 sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/2"> 
+</div>
   </div>
 </section>
 
@@ -150,7 +151,7 @@
     class="absolute right-0 top-8 transform translate-y-0 mr-20 opacity-80 w-1/2 z-0">
 
     <!-- Scrolling Text in Bio Section -->
-    <section id="bio-text" class="scrolling-text ml-4 custom-bio-text">
+    <section id="bio-text" class="scrolling-text ml-4">
       <p class="text-xl md:text-lg lg:text-2xl">Soy Miguel Klagges,</p>
       <p class="text-xl md:text-lg lg:text-2xl">pionero en Bitcoin y Blockchain en Chile,</p>
       <p class="text-xl md:text-lg lg:text-2xl">con más de 10 años de experiencia</p>
@@ -160,7 +161,7 @@
   </div>
 
 <!-- Experience Video Section with Lazy Load -->
-<div class="experience-video relative z-10 w-full max-w-screen-lg mx-auto" style="background: linear-gradient(to bottom, #717171, #03142D);">
+<div class="experience-video relative z-10 w-full max-w-screen-lg mt-40 mx-auto" style="background: linear-gradient(to bottom, #717171, #03142D);">
   <a href="https://www.youtube.com/watch?v=ji46KcgQRoo&ab_channel=LABITCONF" target="_blank">
     <!-- Placeholder Image -->
     <img id="video-placeholder" src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/LABITCONF_banner.webp" 
@@ -191,11 +192,12 @@
 
 <!-- Scrolling Text in Bio Section -->
 <section id="bio-text" class="scrolling-text relative ml-4 mt-20 z-10 mb-4">
-  <p class="text-xl md:text-lg lg:text-2xl">Si estás interesado en descubrir cómo Bitcoin y Blockchain <br>pueden transformar el mundo, </p>
-  <p class="text-xl md:text-lg lg:text-2xl">estás en el lugar adecuado.</p>
-  <p class="text-xl md:text-lg lg:text-2xl">Mi objetivo es guiarte en este viaje, ofreciendo conocimientos claros</p>
-  <p class="text-xl md:text-lg lg:text-2xl">que hagan que esta tecnología sea accesible y beneficiosa para todos.</p>
+  <p class="text-xl md:text-lg lg:text-2xl scroll-text">Si estás interesado en descubrir cómo Bitcoin y Blockchain <br>pueden transformar el mundo, </p>
+  <p class="text-xl md:text-lg lg:text-2xl scroll-text">estás en el lugar adecuado.</p>
+  <p class="text-xl md:text-lg lg:text-2xl scroll-text">Mi objetivo es guiarte en este viaje, ofreciendo conocimientos claros</p>
+  <p class="text-xl md:text-lg lg:text-2xl scroll-text">que hagan que esta tecnología sea accesible y beneficiosa para todos.</p>
 </section>
+
 </div>
 
   <style>
@@ -455,10 +457,10 @@
         <p>Además de su uso en criptomonedas, blockchain está revolucionando industrias como la logística, las finanzas y la identidad digital, ofreciendo soluciones innovadoras a problemas antiguos.</p>
       </div>
 
-      <div class="w-1/2 h-[1000px] relative">
+      <div class="w-1/2 h-[100%] relative">
         <!-- Fallback Image -->
         <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/blockchain-animation.webp" alt="Blockchain Placeholder" 
-             id="blockchain-fallback-image" class="w-full h-full object-cover">
+             id="blockchain-fallback-image" class="w-full z-0 h-full object-cover">
 
         <!-- Spline Viewer for 3D animation -->
         <spline-viewer id="blockchain-animation" url="https://prod.spline.design/LuIXBVYbV3d04S0x/scene.splinecode" 
@@ -619,58 +621,42 @@
 
 </script>
 <!-- Real Time BTC Price -->
-<script>  
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    async function fetchBTCPrice() {
+      try {
+        // Fetch data from CoinGecko API for BTC/CLP
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=clp');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        const btcPrice = data.bitcoin.clp; // Access the BTC price in CLP
 
-	document.addEventListener('DOMContentLoaded', function () {
-		// Function to fetch BTC/CLP price
-		async function fetchBTCPrice() {
-			try {
-				// Fetch data from CoinGecko API for BTC/CLP
-				const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=clp');
-				const data = await response.json();
-				const btcPrice = data.bitcoin.clp; // Use CLP
+        // Get the price element
+        const priceElement = document.getElementById('btc-price-value');
+        
+        // Format and update the price
+        priceElement.textContent = new Intl.NumberFormat('es-CL', {
+          style: 'currency',
+          currency: 'CLP'
+        }).format(btcPrice);
 
-				// Get the price element
-				const priceElement = document.getElementById('btc-price-value');
-				const currentPrice = parseFloat(priceElement.textContent.replace(/,/g, '')); // Remove commas to compare
+        // Optional fade animation
+        priceElement.classList.add('fade-in');
+        setTimeout(() => priceElement.classList.remove('fade-in'), 500);
 
-				// If the price is different, update with fade effect
-				if (btcPrice !== currentPrice) {
-					// Add fade-out animation
-					priceElement.classList.add('fade-out');
+      } catch (error) {
+        console.error('Error fetching BTC price:', error);
+      }
+    }
 
-					// Update the price after the fade-out transition
-					setTimeout(() => {
-						priceElement.textContent = new Intl.NumberFormat().format(btcPrice); // Format with commas
-
-						// Add fade-in animation after updating the price
-						priceElement.classList.remove('fade-out');
-						priceElement.classList.add('fade-in');
-
-						// Remove fade-in class after animation is done
-						setTimeout(() => {
-							priceElement.classList.remove('fade-in');
-						}, 500); // Match the duration of the animation
-
-					}, 500); // Wait for fade-out to complete
-				}
-
-			} catch (error) {
-				console.error('Error fetching BTC price:', error);
-			}
-		}
-
-		// Fetch the price every 15 seconds
-		fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=clp', {
-    mode: 'no-cors'
-})
-.then(response => {
-    // Handle the response
-})
-.catch(error => {
-    console.error('Error fetching BTC price:', error);
-});
-	});
+    // Fetch the price immediately and then every 15 seconds
+    fetchBTCPrice(); // Initial fetch
+    setInterval(fetchBTCPrice, 15000); // Fetch every 15 seconds
+  });
 </script>
 
 <!-- JavaScript for Lazy Loading the Video -->
@@ -691,27 +677,7 @@
     video.load();
   });
 </script>
-
-<!-- bio fade in-->
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const textElements = document.querySelectorAll('.scrolling-text p');
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.style.animationPlayState = 'running'; // Trigger the animation
-					}
-				});
-			}, {
-				threshold: 0.1, // Adjust this based on when you want the animation to start
-			});
-
-			textElements.forEach(element => {
-				observer.observe(element);
-			});
-		});
-	</script>
+  
 <script>
 // JavaScript for Smooth Image and Text Loading 
 
@@ -761,6 +727,7 @@
       });
   });
 </script>
+
 	</body>
 
 </html>

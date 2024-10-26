@@ -328,47 +328,18 @@
   z-index: 1; /* Ensure it stays above the background */
 }
 
-/* Custom Paragraph Styling */
-.custom-paragraph {
-  color: white; /* Ensures text is fully visible */
-  margin-top: 20%; /* Custom top margin */
-}
-
-.scrolling-text {
-  color: white !important;
-  display: block !important; /* Ensure it's visible */
-  z-index: 999 !important;    /* Ensure it's on top */
-  opacity: 1 !important;     /* Ensure full opacity */
-  position: relative; 
-
-}
-/* Custom styles for high pixel density (Retina) displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .scrolling-text {
-    color: white !important;
-    background-color: black !important;
-    font-size: 1.25rem !important; /* Increase font size for readability */
-    overflow: visible !important; /* Prevent overflow issues */
-    width: 100vw !important; /* Span the entire width */
-    
+/* Scroll-Reveal Keyframes */
+@keyframes scroll-reveal {
+  25% {
+    opacity: 1;
   }
-}
-
-/* Handle general mobile and responsive layout */
-@media (max-width: 767px) {
-  .custom-bio-text {
-    color: white !important;
-    width: 100vw; /* Make sure the text takes up the full viewport width */
-    opacity: 1 !important;
-    z-index: 1000 !important;
-    font-size: 1rem !important; /* Increase font size for readability */
+  50%, 60% {
+    opacity: 1;
+    background-size: 100% 100%;
   }
-
-  /* Ensure no height-related overflow hides text */
-  .bio-section-content {
-    overflow: visible !important;
-    height: auto !important; /* Ensure it resizes to fit content */
-    min-height: 100%; 
+  100% {
+    opacity: 1;
+    background-size: 100% 100%; /* Keep it visible */
   }
 }
 
@@ -493,6 +464,10 @@ a.bg-yellow-500:hover {
   }
 }
 
+#btc-price-section {
+  display: flex;
+}
+
 /* Minimalist styling for the BTC/CLP price */
 #btc-price, #btc-price-value {
   font-size: rem; /* Size of the price */
@@ -500,6 +475,9 @@ a.bg-yellow-500:hover {
   display: inline-block;
   position: relative;
   color: white;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." if text is too long */
 }
 
 /* Fade-in animation */
