@@ -22,6 +22,7 @@
 
   <!-- TailwindCSS CDN and Custom Configuration -->
 <script src="https://cdn.tailwindcss.com"></script>
+
 <script>
   tailwind.config = {
     theme: {
@@ -39,28 +40,17 @@
   }
 </script>
 
+<!--  Simple Parallax -->
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.0/dist/simpleParallax.min.js"></script>
+
   <!--  Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap" rel="stylesheet">
 </head>
-
+<div class="main-content">
 <body class="bg-black text-white overflow-x-hidden">
 
-
-<!-- Full-screen Overlay Menu -->
-<div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 z-30" style="display: none; pointer-events: none">
-  <!-- Close Button -->
-  <button id="closeButton" class="absolute top-10 right-20 text-white text-3xl cursor-pointer focus:outline-none">×</button>
-
- <nav class="flex items-center justify-center h-full w-full">
-   <ul class="text-center space-y-6 text-2xl text-white leading-relaxed">
-     <li><a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="hover:text-gray-400 font-raleway font-medium">Blog</a></li>
-     <li><a href="#asistencia" id="asistButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Servicios</a></li>
-     <li><a href="#blockchain" id="blockButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Sobre Blockchain</a></li>
-     <li><a href="#contact-form" id="contactButton"class="scroll-link hover:text-gray-400 font-raleway font-medium">Contacto</a></li>
-   </ul>
- </nav>
-</div>
 
 <style>
  /* Enable smooth scrolling for all anchor links */
@@ -71,7 +61,7 @@
 
 <!-- Navbar Container -->
 <header class="fixed top-0 left-0 w-full z-20 bg-black bg-opacity-50">
-  <nav class="container mx-auto px-4 py-4 flex items-center justify-between max-w-full">
+  <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
     
     <!-- Logo Section -->
     <div class="flex-shrink-0">
@@ -79,16 +69,16 @@
     </div>
     
     <!-- Right Section (BTC Counter & Burger Menu) -->
-    <div class="flex items-center space-x-4 mr-20">
+    <div class="flex items-center justify-end space-x-4 w-full">
       
       <!-- BTC Price Section -->
-      <section id="btc-price-section" class="text-white ml-10 mt-5 lg:mr-10 relative text-sm md:text-base">
-        <span id="btc-price-value"> BTC/CLP</span>
+      <section id="btc-price-section" class="text-white text-sm md:text-base">
+        <span id="btc-price-value" class="font-orbitron">0.00 BTC/CLP</span>
       </section>
       
-      <!-- Hamburger Menu Button -->
-      <div id="burgermenu" class="block w-8 h-8 md:w-10 md:h-10 flex-shrink-0">
-        <svg class="hamburger w-8 h-8 text-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Burger Menu Button -->
+      <div id="burgermenu" class="w-8 h-8 md:w-10 md:h-10">
+        <svg class="hamburger w-full h-full text-white cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </div>
@@ -97,10 +87,6 @@
   </nav>
 </header>
   
-  
-  
-
-
 <!-- Hero Section -->
 <section class="relative h-[75vh] md:h-screen w-full overflow-hidden hero-section"> <!-- Shorter height for mobile -->
   <!-- Background Video -->
@@ -116,8 +102,8 @@
    <!-- Sliding Text (looping) -->
    <div class="absolute  md:top-1/6 left-0 w-full h-full flex justify-center items-center overflow-hidden">
     <div id="hero-text" class="font-bold text-white opacity-90 whitespace-nowrap text-scroll transition-opacity duration-1000 bg-gradient-to-r from-gray-100 to-gray-700 bg-clip-text mix-blend-overlay text-4xl md:text-[20rem] lg:text-[30rem]">
-      <span class="mx-1 inline-block">El futuro es Bitcoiner</span>
-      <span class="mx-1 inline-block">El futuro es Bitcoiner</span> <!-- Repeating for smooth scrolling -->
+      <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span>
+      <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span> <!-- Repeating for smooth scrolling -->
     </div>
   </div>
 
@@ -156,7 +142,7 @@
   </style>
 
   <!-- Main Image (initially hidden, will fade in) -->
-  <div class="relative z-10 flex justify-center items-end h-full mt-0 xs:mt-0 sm:mt-10">
+  <div class="relative z-8 flex justify-center items-end h-full mt-0 xs:mt-0 sm:mt-10">
     <img id="hero-image" src="https://miguelklagges.com/wp-content/uploads/2024/10/miguel-1_nobackground.webp" 
          alt="Miguel Klagges" 
          class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 xs:w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/2 md-custom:w-1/2"> 
@@ -175,7 +161,7 @@
          class="bio-signature-image absolute right-0 transform translate-y-0 mr-20 opacity-80 w-1/2 md:w-1/2 sm:w-1/2 xs:w-1/2 z-0">
 
 <!-- First Bio Section with Scroll Animation -->
-<section id="bio-text" class="scrolling-text space-y-2 text-left mx-auto">
+<section id="bio-text" class="scrolling-text space-y-2 text-left ">
   <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
     <span>Soy</span> <span>Miguel</span> <span>Klagges,</span>
   </p>
@@ -341,14 +327,13 @@
       <!-- Spline Animation on the Left -->
 <!-- 3D Animation Section with Fallback -->
 <div id="bitcoinanimation" class="w-full lg:w-1/2 relative">
-  <!-- Fallback Image, initially shown -->
+  <!-- Fallback Image (Placeholder) -->
   <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/bitcoin-animation.webp" alt="Bitcoin Animation Placeholder" 
-       class="w-full h-auto" id="bitcoin-image-fallback">
+       class="w-full h-auto placeholder" id="bitcoin-image-fallback">
 
   <!-- Spline Viewer for 3D animation -->
   <spline-viewer url="https://prod.spline.design/f6ln9oZ6GV1j6QQl/scene.splinecode"
-                 id="bitcoin-animation" class="w-full h-[500px] hidden">
-  </spline-viewer>
+                 id="bitcoin-animation" class="w-full h-[500px] spline-animation hidden"></spline-viewer>
 </div>
 
       <!-- Text on the Right -->
@@ -360,7 +345,7 @@
         <p class="text-lg mt-4 text-white-300 custom-paragraph">¿Estás interesado en adquirir <br>Bitcoin pero no <br>sabes por dónde empezar?</p>
 
         <!-- CTA Button -->
-        <a href="https://miguelklagges.com/2024/10/25/blog-1/" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+        <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
           Leer más
         </a>
       </div>
@@ -434,10 +419,10 @@
 
 <!-- Blockchain Section with Parallax Background -->
 <section id="blockchain" class="relative bg-gray-900 py-16">
-  <div 
-    class="absolute inset-0 bg-cover bg-center lg:bg-fixed" 
-    style="background-image: url('https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/DSC4224-scaled.webp'); background-size: cover; opacity: 0.7;">
-  </div>
+  <!-- Parallax Image -->
+  <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/DSC4224-scaled.webp" 
+       alt="Blockchain Background" 
+       class="parallax-image absolute inset-0 w-full h-full object-cover opacity-70 z-[-1]">
 
   <!-- Glassy Overlay -->
   <div class="relative bg-white bg-opacity-10 backdrop-blur-lg py-16">
@@ -447,7 +432,7 @@
       </h2>
 
       <div class="w-3/4 text-white text-lg mb-6">
-        <p>Blockchain es un sistema descentralizado que asegura la transparencia y la seguridad de las transacciones. </p>
+        <p>Blockchain es un sistema descentralizado que asegura la transparencia y la seguridad de las transacciones.</p>
       </div>
     
       <div class="w-3/4 text-white text-lg mb-6">
@@ -458,22 +443,14 @@
         <p>Además de su uso en criptomonedas, blockchain está revolucionando industrias como la logística, las finanzas y la identidad digital, ofreciendo soluciones innovadoras a problemas antiguos.</p>
       </div>
 
-      <div class="w-1/2 h-[100%] relative">
-        <!-- Fallback Image -->
-        <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/blockchain-animation.webp" alt="Blockchain Placeholder" 
-             id="blockchain-fallback-image" class="w-full z-0 h-full object-cover">
-
-        <!-- Spline Viewer for 3D animation -->
-        <spline-viewer id="blockchain-animation" url="https://prod.spline.design/LuIXBVYbV3d04S0x/scene.splinecode" 
-                       style="pointer-events: none; display: none;"></spline-viewer>
-      </div>
-
-      <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+      <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" 
+         class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
         Aprende más sobre Blockchain
       </a>
     </div>
   </div>
 </section>
+
 
 <script>
   document.querySelectorAll('.cta-button').forEach(button => {
@@ -536,19 +513,32 @@ document.addEventListener('click', (event) => {
     </div>
   </div>
 </footer>
+</div>
 
+     <!-- Full-screen Overlay Menu -->
+<div id="mobileMenu" class="fixed inset-0 bg-black h-100vh bg-opacity-90 opacity-0 transition-opacity duration-300 z-30" style="display: none; pointer-events: none">
+  <!-- Close Button -->
+  <button id="closeButton" class="absolute top-10 right-20 text-white text-3xl cursor-pointer focus:outline-none">×</button>
+
+ <nav class="flex items-center justify-around h-full w-full">
+   <ul class="text-center space-y-6 text-2xl text-white leading-relaxed">
+     <li><a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="hover:text-gray-400 font-raleway font-medium">Blog</a></li>
+     <li><a href="#asistencia" id="asistButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Servicios</a></li>
+     <li><a href="#blockchain" id="blockButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Sobre Blockchain</a></li>
+     <li><a href="#contact-form" id="contactButton"class="scroll-link hover:text-gray-400 font-raleway font-medium">Contacto</a></li>
+   </ul>
+ </nav>
+</div>
+</div>
 <!-- External Libraries -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
 
-<!-- Other Section-Specific Scripts -->
-<script src="js/btcPrice.js"></script>
-<script src="js/videoLazyLoad.js"></script>
-<script src="js/smoothImageTextLoad.js"></script>
-<script src="js/bio.js"></script>
-<script src="js/menuToggle.js"></script>
-
-<!-- Timeline Animation Script (ensure it's loaded last) -->
-<script src="js/timeline.js"></script>
+<script src="js/videoLazyLoad.js"></script> <!-- independent lazy load -->
+<script src="js/smoothImageTextLoad.js"></script> <!-- likely independent too -->
+<script src="js/btcPrice.js"></script> <!-- depends on #btc-price-value element -->
+<script src="js/bio.js"></script> <!-- might rely on #bio-text elements -->
+<script src="js/menuToggle.js"></script> <!-- controls menu elements, likely global -->
+<script src="js/timeline.js"></script> <!-- Ensure it is last if needed -->
 
 <!-- Inline Script for Bio Section Fade-in Animation -->
 <script>

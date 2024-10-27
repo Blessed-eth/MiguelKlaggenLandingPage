@@ -17,10 +17,7 @@ body, html {
     }
   
     /* Burger menu size adjustments */
-    .hamburger {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+ 
   
     .menu-container ul li a {
       font-size: 1.5rem;
@@ -129,3 +126,18 @@ body, html {
       display: block;
     }
   }
+
+  /* Detect high pixel density */
+@media only screen and (min-device-pixel-ratio: 2), 
+only screen and (min-resolution: 192dpi) {
+  
+/* Adjust or disable parallax background */
+#blockchain {
+background-attachment: scroll; /* Disable fixed background */
+background-size: cover; /* Make sure image fits without zooming */
+}
+}
+.disable-parallax {
+  background-attachment: scroll; /* Disable fixed background */
+  background-size: cover; /* Prevent zooming on iOS */
+}

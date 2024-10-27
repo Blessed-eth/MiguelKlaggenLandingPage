@@ -14,3 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Detect iOS devices
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+if (isIOS) {
+  document.querySelectorAll('.parallax-section').forEach(section => {
+    section.classList.add('disable-parallax'); // Add a class to modify background behavior
+  });
+}

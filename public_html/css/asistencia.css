@@ -39,6 +39,13 @@
 #asistencia {
   z-index: 1; /* Ensure it stays above the background */
 }
+/* Override for smaller screens (width < 415px) */
+@media (max-width: 414px) {
+    #asistencia {
+      background-image: none;
+      background-color: black;
+    }
+  }
 
 #cd-timeline {
   z-index: 1; /* Ensure it stays above the background */

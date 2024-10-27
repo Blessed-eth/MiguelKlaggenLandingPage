@@ -3,23 +3,19 @@ const burgerMenu = document.getElementById('burgermenu');
 const closeButton = document.getElementById('closeButton');
 
 burgerMenu.addEventListener('click', () => {
-  if (mobileMenu.classList.contains('show')) {
-    mobileMenu.classList.remove('show');
-    setTimeout(() => {
-      mobileMenu.style.display = 'none'; // Hide completely after fade-out
-    }, 300); // Duration should match CSS transition time
-  } else {
-    console.log("Showing mobile menu");
-    mobileMenu.style.display = 'block'; // Show immediately
-    setTimeout(() => {
-      mobileMenu.classList.add('show'); // Fade in
-    }, 10); // Slight delay to allow display change to take effect
-  }
+  document.body.classList.toggle('menu-open');
+  mobileMenu.style.display = 'block';
+  setTimeout(() => {
+    mobileMenu.style.opacity = document.body.classList.contains('menu-open') ? '1' : '0';
+  }, 10); // Slight delay for smooth transition
 });
 
 closeButton.addEventListener('click', () => {
-  mobileMenu.classList.remove('show');
+  document.body.classList.remove('menu-open');
   setTimeout(() => {
-    mobileMenu.style.display = 'none'; // Hide completely after fade-out
-  }, 300); // Duration should match CSS transition time
+    mobileMenu.style.opacity = '0';
+    setTimeout(() => {
+      mobileMenu.style.display = 'none';
+    }, 300); // Match CSS transition duration
+  }, 10);
 });

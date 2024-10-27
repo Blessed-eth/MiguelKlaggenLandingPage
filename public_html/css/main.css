@@ -1,20 +1,62 @@
-body *:not(#mobileMenu):not(header) {
+/* General Rule: Lower Z-Index for All Elements Except Specific Interactive/Animated Elements */
+body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-section):not(.hero-section *):not(#hero-text *) {
     z-index: 1;
-  }
-/* Ensure buttons are above other content */
-a.bg-yellow-500 {
-  position: relative; /* Ensures the button is on top of background layers */
-  z-index: 10; /* Increases z-index to prevent it from being covered */
 }
-
-/* Ensure only specific elements have pointer-events: none */
-#cubesanimation, #dollarsanimation, #wallet-fallback-image, #fund-fallback-image, spline-viewer {
-    pointer-events: none; /* Non-interactive elements only */
+  
+  /* CTA Buttons Above All Background Elements */
+  a.bg-yellow-500, .cta-button {
+    position: relative;
+    z-index: 10; /* Keeps buttons clickable */
+    pointer-events: auto;
   }
   
-  /* Ensure CTA buttons remain clickable */
-  .cta-button {
-    pointer-events: auto !important; /* Enable pointer events on buttons */
-    position: relative;   /* Increase z-index relative to other elements */
+
+
+  /* Parallax background styling for larger screens */
+#asistencia, #wallet-choice, #fund-recovery, #blockchain .absolute {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Maintains aspect ratio on large screens */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  #asistencia, #wallet-choice, #fund-recovery, #blockchain .absolute {
+    background-attachment: scroll; /* Prevents zoomed-in effect on mobile */
+    background-size: contain; /* Keeps aspect ratio without zooming */
+    background-position: center top; /* Adjust positioning for smaller screens */
   }
- 
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+  #asistencia, #wallet-choice, #fund-recovery, #blockchain .absolute {
+    background-attachment: scroll; /* Ensure the fixed effect is removed */
+    background-size: cover; /* Fill screen width while keeping aspect ratio */
+    background-position: center top;
+  }
+}
+
+/* Default styling for desktops and large screens */
+#asistencia, #wallet-choice, #fund-recovery, #blockchain .absolute {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* Override for high-resolution mobile devices (targeting iPhone-like behavior) */
+  @media only screen and (max-device-width: 767px), 
+         only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2),
+         only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+    
+    #asistencia, #wallet-choice, #fund-recovery, #blockchain .absolute {
+      background-attachment: scroll;
+      background-size: cover; /* Keeps image from zooming in on mobile */
+      background-position: center center; /* Centers image on small screens */
+    }
+  }
+  .hidden {
+    display: none !important;
+  }
