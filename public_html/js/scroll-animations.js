@@ -1,54 +1,80 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Scroll animation script loaded and running.");
-});
+// Animation settings for different sections
+const totalTimelineFrames = 136;
+const totalFundRecoveryFrames = 408;
+const timelineFolder = '/timelinebackground/optimizedvideos/';
+const fundRecoveryFolder = '/deepmindanimation/optimizedvideos/';
 
+// Helper function to set background images based on frame index
+function setBackgroundImage(section, folder, frameIndex) {
+    const imagePath = `${folder}frame-${String(frameIndex).padStart(6, '0')}.webp`;
+    section.style.backgroundImage = `url('${imagePath}')`;
+}
+
+// Preload all frames for smoother transitions
+function preloadFrames(folder, totalFrames) {
+    for (let i = 0; i < totalFrames; i++) {
+        const img = new Image();
+        img.src = `${folder}frame-${String(i).padStart(6, '0')}.webp`;
+    }
+}
+
+// Preload frames for the fund recovery section
+preloadFrames(fundRecoveryFolder, totalFundRecoveryFrames);
+
+// Scroll event listener for animations
 document.addEventListener('scroll', () => {
-    const firstAnimationFrameCount = 136; // Frames in the first animation
-    const secondAnimationFrameCount = 80;  // Frames in the second animation
-    
-    // Sections
+    // Timeline Section Animation
     const timelineSection = document.getElementById('cd-timeline');
-    const sharedBackgroundWrapper = document.querySelector('.shared-background-wrapper');
-    const transitionSection = document.querySelector('.second-animation-transition-section');
-    const chooseWalletSection = document.querySelector('.choose-wallet');
-    const assistanceSection = document.querySelector('.assistance');
+    if (timelineSection) {
+        const sectionTop = timelineSection.getBoundingClientRect().top;
+        const sectionHeight = timelineSection.offsetHeight;
+        const viewportHeight = window.innerHeight;
 
-    if (timelineSection && sharedBackgroundWrapper) {
-        const sectionTop = timelineSection.offsetTop;
-        const sectionHeight = sharedBackgroundWrapper.offsetHeight;
-        const scrollPosition = window.scrollY + window.innerHeight;
-        
-        // Calculate scroll progress for the timeline section
-        const sectionScroll = scrollPosition - sectionTop;
-        
-        // Extended height for smoother first animation transition
-        const extendedHeight = sectionHeight + window.innerHeight * 1.5;
-        const scrollFraction = sectionScroll / extendedHeight;
+        if (sectionTop <= viewportHeight && sectionTop + sectionHeight >= 0) {
+            const scrollFraction = Math.min(1, Math.abs(sectionTop) / (sectionHeight + viewportHeight));
+            const frameIndex = Math.floor(scrollFraction * (totalTimelineFrames - 1));
+            setBackgroundImage(timelineSection, timelineFolder, frameIndex);
+        }
+    }
 
-        // Check and display logs for timeline and first animation frame loading
-        if (scrollFraction < 0.95) {
-            const frameIndex = Math.min(firstAnimationFrameCount - 1, Math.floor(scrollFraction * firstAnimationFrameCount));
-            timelineSection.style.backgroundImage = `url('/timelinebackground/optimizedvideos/frame-${String(frameIndex).padStart(6, '0')}.webp')`;
-            console.log(`Timeline first animation frame: /timelinebackground/optimizedvideos/frame-${String(frameIndex).padStart(6, '0')}.webp`);
-        } 
-        // Initiate the second animation upon nearing the end of the first
-        else if (scrollFraction >= 0.95) {
-            const transitionScrollFraction = (scrollFraction - 0.95) / 0.3; 
-            const frameIndex = Math.min(secondAnimationFrameCount - 1, Math.floor(transitionScrollFraction * secondAnimationFrameCount));
+    // Fund Recovery Section Animation
+    const fundRecoverySection = document.getElementById('fund-recovery');
+    const containerInside = fundRecoverySection.querySelector('.container');
 
-            // Apply background to the transition, choose-wallet, and assistance sections
-            if (transitionSection) {
-                transitionSection.style.backgroundImage = `url('/blockchain_revolution_animation/frame-${String(frameIndex).padStart(6, '0')}.webp')`;
-                console.log(`Transition second animation frame: /blockchain_revolution_animation/frame-${String(frameIndex).padStart(6, '0')}.webp`);
-            }
-            if (chooseWalletSection) {
-                chooseWalletSection.style.backgroundImage = `url('/blockchain_revolution_animation/frame-${String(frameIndex).padStart(6, '0')}.webp')`;
-                console.log(`Choose wallet section second animation frame: /blockchain_revolution_animation/frame-${String(frameIndex).padStart(6, '0')}.webp`);
-            }
-            if (assistanceSection) {
-                assistanceSection.style.backgroundImage = `url('/blockchain_revolution_animation/frame-${String(frameIndex).padStart(6, '0')}.webp')`;
-                console.log(`Assistance section second animation frame: /blockchain_revolution_animation/frame-${String(frameIndex).padStart(6, '0')}.webp`);
-            }
+    if (fundRecoverySection) {
+        const sectionTop = fundRecoverySection.getBoundingClientRect().top;
+        const sectionHeight = fundRecoverySection.offsetHeight;
+        const viewportHeight = window.innerHeight;
+
+        // Display animation frames when section is in view
+        if (sectionTop <= viewportHeight && sectionTop + sectionHeight >= 0) {
+            const scrollFraction = Math.min(1, Math.abs(sectionTop) / (sectionHeight - viewportHeight));
+            const frameIndex = Math.floor(scrollFraction * (totalFundRecoveryFrames - 1));
+            setBackgroundImage(fundRecoverySection, fundRecoveryFolder, frameIndex);
+
+            // Keep the section sticky while playing the animation
+            containerInside.style.position = 'sticky';
+            containerInside.style.top = '0';
+        } else {
+            // Keep the last frame as the background when out of view
+            setBackgroundImage(fundRecoverySection, fundRecoveryFolder, totalFundRecoveryFrames - 1);
+            containerInside.style.position = 'relative';
         }
     }
 });
+
+// Navbar fade-out on footer visibility
+const bottomNav = document.getElementById('bottomnav');
+const footer = document.querySelector('footer');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            bottomNav.classList.add('fade-out');
+        } else {
+            bottomNav.classList.remove('fade-out');
+        }
+    });
+}, { threshold: 0.1 });
+
+observer.observe(footer);

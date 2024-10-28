@@ -1,5 +1,5 @@
 /* General Rule: Lower Z-Index for All Elements Except Specific Interactive/Animated Elements */
-body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-section):not(.hero-section *):not(#hero-text *) {
+body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-section):not(.hero-section *):not(#hero-text *):not(#bottomnav) {
     z-index: 1;
 }
   
@@ -11,7 +11,20 @@ body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-s
   }
   
 
+  #fund-recovery {
+    background-color: white; /* Base color in case animation fails */
+    background-image: url('/deepmindanimation/optimizedvideos/frame-000000.webp'); /* Initial frame as fallback */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200vh;
+}
 
+#fund-recovery .container {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
   /* Parallax background styling for larger screens */
 #asistencia, #wallet-choice, #fund-recovery, #blockchain .absolute {
   background-attachment: fixed;
@@ -60,11 +73,62 @@ body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-s
   .hidden {
     display: none !important;
   }
-  .second-animation-transition-section {
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    background-size: cover;
+  .second-animation-transition-section,
+  .third-animation-transition-section {
+    height: 100vh; /* Full viewport height */
+    position: relative; /* Initially relative */
+    z-index: 10; /* Ensure it’s above other sections */
+    background-size: cover; /* Ensure the animation background covers the section */
     background-position: center;
-    z-index: 1;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Avoid overflow during fixed position */
+}
+
+/* Bottom Navigation Panel Styling */
+#bottomnav {
+  background-color: rgba(51, 51, 51, 0.6); /* Dark background for contrast */
+  padding: 0.75rem 0;
+}
+
+#bottomnav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+#bottomnav a:hover {
+  color: #f59e0b; /* Yellow on hover */
+}
+
+#bottomnav i {
+  font-size: 1.5rem;
+}
+
+/* Adjust MK Isotipo */
+#mk_isotipo {
+  width: 90px; /* Small width for a tight fit */
+  margin: 0;
+  padding: 0;
+}
+
+#bottomnav span {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Bottom Navigation fadeout Styling */
+#bottomnav {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  pointer-events: auto; /* Allow interaction by default */
+  transform: translateY(0);
+}
+
+#bottomnav.fade-out {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction when faded out */
+  transform: translateY(10px); /* Optional: slight shift for better effect */
 }
