@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/hero.css">
   <link rel="stylesheet" href="./css/bio.css">
+  <link rel="stylesheet" href="./css/wallet.css">
   <link rel="stylesheet" href="./css/timeline.css">
   <link rel="stylesheet" href="./css/asistencia.css">
   <link rel="stylesheet" href="./css/blockchain.css">
@@ -120,66 +121,51 @@
 </div>
   
 <!-- Hero Section -->
-<section id="Hero" class="relative h-[75vh] md:h-screen w-full overflow-hidden hero-section"> <!-- Shorter height for mobile -->
-  <!-- Background Video -->
-  <video autoplay muted loop class="absolute top-0 left-0 w-full h-3/4 object-cover fade-in">
-    <source src="https://miguelklagges.com/wp-content/uploads/2024/10/mk_hero_background.webm" type="video/webm">
-    <source src="https://miguelklagges.com/wp-content/uploads/2024/10/hero.mp4" type="video/mp4"> <!-- MP4 Fallback -->
-    Tu navegador no soporta video.
-  </video>
+<section id="Hero" class="relative h-[75vh] md:h-screen w-full overflow-hidden hero-section">
+   <!-- Shorter height for mobile -->
+    <!-- Background Video -->
+    <video autoplay muted loop class="absolute top-0 left-0 w-full h-3/4 object-cover fade-in">
+      <source src="https://miguelklagges.com/wp-content/uploads/2024/10/mk_hero_background.webm" type="video/webm">
+      <source src="https://miguelklagges.com/wp-content/uploads/2024/10/hero.mp4" type="video/mp4"> <!-- MP4 Fallback -->
+      Tu navegador no soporta video.
+    </video>
 
-  <!-- Overlay -->
+    <!-- Overlay -->
   <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
 
-   <!-- Sliding Text (looping) -->
-   <div class="absolute  md:top-1/6 left-0 w-full h-full flex justify-center items-center overflow-hidden">
-    <div id="hero-text" class="font-bold text-white opacity-90 whitespace-nowrap text-scroll transition-opacity duration-1000 bg-gradient-to-r from-gray-100 to-gray-700 bg-clip-text mix-blend-overlay text-4xl md:text-[20rem] lg:text-[30rem]" style="font-family: 'Playfair Display', serif;">
-
+  <!-- Sliding Text (looping) -->
+  <div class="absolute md:top-1/6 left-0 w-full h-full flex justify-center items-center overflow-hidden">
+    <div id="hero-text" class="text-scroll font-bold text-white opacity-90 whitespace-nowrap bg-gradient-to-r from-gray-100 to-gray-700 bg-clip-text mix-blend-overlay text-4xl md:text-[20rem] lg:text-[30rem]" style="font-family: 'Playfair Display', serif;">
+      <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span>
+      <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span>
       <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span>
       <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span> <!-- Repeating for smooth scrolling -->
     </div>
   </div>
 
   <style>
-    /* Slower sliding text animation */
+    /* Sliding text animation */
     @keyframes slideText {
       0% {
-        transform: translateX(10%);
+        transform: translateX(0%); /* Start off the right side */
       }
       100% {
-        transform: translateX(-100%);
+        transform: translateX(-50%); /* End off the left side */
       }
     }
-  
-    /* Slower animation with larger text */
+    
     .text-scroll {
       display: inline-block;
-      animation: slideText 55s linear infinite; 
-    }
-    .hero-text {
-      transform: translateX(80%);
-    }
-  
-    /* Fade-in for image and text */
-    .opacity-0 {
-      opacity: 0;
-    }
-  
-    .opacity-100 {
-      opacity: 1;
-    }
-  
-    .transition-opacity {
-      transition: opacity 1s ease-in-out;
+      animation: slideText 30s linear infinite; /* Adjust timing for smooth flow */
     }
   </style>
 
-  <!-- Main Image (initially hidden, will fade in) -->
-  <div class="relative z-8 flex justify-center items-end h-full mt-0 xs:mt-0 sm:mt-10">
-    <img id="hero-image" src="https://miguelklagges.com/wp-content/uploads/2024/10/miguel-1_nobackground.webp" 
-         alt="Miguel Klagges" 
-         class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 xs:w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/2 md-custom:w-1/2"> 
-  </div>
+    <!-- Main Image (initially hidden, will fade in) -->
+    <div class="relative z-8 flex justify-center items-end h-full mt-0 xs:mt-0 sm:mt-10">
+      <img id="hero-image" src="https://miguelklagges.com/wp-content/uploads/2024/10/miguel-1_nobackground.webp" 
+          alt="Miguel Klagges" 
+          class="rounded-lg shadow-lg opacity-0 transition-opacity duration-1000 xs:w-3/4 sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/2 md-custom:w-1/2"> 
+    </div>
   </div>
 </section>
 
@@ -259,7 +245,7 @@
     </section>
 
     <!-- CTA Button -->
-    <a target="_blank" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
+    <a target="_blank" id="cta-button" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition fade-in-on-scroll">
       Hablemos de Bitcoin
     </a>
 
@@ -531,52 +517,52 @@
     </div>
   </div>
 
-  <!-- Timeline Block 8 (right) -->
-  <div class="cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full mb-16 mt-20 sm:mb-24 relative">
-    <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
-      <img src="https://miguelklagges.com/wp-content/uploads/2024/10/alianza_blockchain_cover-e1729797667632.jpeg" alt="Alianza Blockchain" class="w-full h-full object-contain">
-    </div>
-    <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
-      <h2 class="text-lg md:text-xl font-bold text-white">Cofundador de Alianza Blockchain Iberoamérica</h2>
-      <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </div>
-</div>
-<!-- Parent container with shared background image -->
-<div class="shared-background-wrapper">
-
-    <!-- Asistencia Section -->
-    <section id="asistencia" class="relative text-white lg:bg-fixed py-16 w-screen inline-block">
-      <div class="container mx-auto flex items-center">
-        <!-- Spline Animation on the Left -->
-  <!-- 3D Animation Section with Fallback -->
-  <div id="bitcoinanimation" class="w-full lg:w-1/2 relative">
-    <!-- Fallback Image (Placeholder) -->
-    <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/bitcoin-animation.webp" alt="Bitcoin Animation Placeholder" 
-        class="w-full h-auto placeholder" id="bitcoin-image-fallback">
-
-    <!-- Spline Viewer for 3D animation -->
-    <spline-viewer url="https://prod.spline.design/f6ln9oZ6GV1j6QQl/scene.splinecode"
-                  id="bitcoin-animation" class="w-full h-[500px] spline-animation hidden"></spline-viewer>
-  </div>
-
-        <!-- Text on the Right -->
-        <div class="w-full text-center lg:text-right">
-          <h2 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none" style="font-family: 'Oswald', sans-serif;">
-            Asistencia para <br> obtener Bitcoin
-          </h2>
-          <!-- Adjusted Paragraph -->
-          <p class="text-lg mt-4 text-white-300 custom-paragraph">¿Estás interesado en adquirir <br>Bitcoin pero no <br>sabes por dónde empezar?</p>
-
-          <!-- CTA Button -->
-          <a target="_blank" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
-            Leer más
-          </a>
-        </div>
+    <!-- Timeline Block 8 (right) -->
+    <div class="cd-timeline-block flex flex-col items-center md:flex-row-reverse md:justify-start w-full mb-16 mt-20 sm:mb-24 relative">
+      <div class="circle-container w-20 h-20 rounded-full bg-white z-10 overflow-hidden flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+        <img src="https://miguelklagges.com/wp-content/uploads/2024/10/alianza_blockchain_cover-e1729797667632.jpeg" alt="Alianza Blockchain" class="w-full h-full object-contain">
       </div>
-    </section>
-
+      <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
+        <h2 class="text-lg md:text-xl font-bold text-white">Cofundador de Alianza Blockchain Iberoamérica</h2>
+        <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
 </div>
+  <!-- Parent container with shared background image -->
+  <div class="shared-background-wrapper">
+
+      <!-- Asistencia Section -->
+      <section id="asistencia" class="relative text-white lg:bg-fixed py-16 w-screen inline-block">
+        <div class="container mx-auto flex items-center">
+          <!-- Spline Animation on the Left -->
+    <!-- 3D Animation Section with Fallback -->
+    <div id="bitcoinanimation" class="w-full lg:w-1/2 relative">
+      <!-- Fallback Image (Placeholder) -->
+      <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/bitcoin-animation.webp" alt="Bitcoin Animation Placeholder" 
+          class="w-full h-auto placeholder" id="bitcoin-image-fallback">
+
+      <!-- Spline Viewer for 3D animation -->
+      <spline-viewer url="https://prod.spline.design/f6ln9oZ6GV1j6QQl/scene.splinecode"
+                    id="bitcoin-animation" class="w-full h-[500px] spline-animation hidden"></spline-viewer>
+    </div>
+
+          <!-- Text on the Right -->
+          <div class="w-full text-center lg:text-right">
+            <h2 class="text-[36px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none" style="font-family: 'Oswald', sans-serif;">
+              Asistencia para <br> obtener Bitcoin
+            </h2>
+            <!-- Adjusted Paragraph -->
+            <p class="text-lg mt-4 text-white-300 custom-paragraph">¿Estás interesado en adquirir <br>Bitcoin pero no <br>sabes por dónde empezar?</p>
+
+            <!-- CTA Button -->
+            <a target="_blank" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+              Leer más
+            </a>
+          </div>
+        </div>
+      </section>
+
+  </div>
 
 
   <!-- Wallet Choice Section -->
@@ -584,9 +570,9 @@
     <div class="container mx-auto flex items-center">
       
       <!-- Text Section on the Left -->
-      <div class="w-1/2 ml-20 text-left px-8">
+      <div class="text-left ">
         <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold leading-none" style="font-family: 'Oswald', sans-serif;">
-          Como escoger una <br> Billetera para Bitcoin
+          Como escoger una  Billetera para Bitcoin
         </h2>
         <p class="text-lg text-white mt-4">
           ¿Sabías que elegir la billetera correcta puede ser la clave <br>para proteger tus Bitcoins? Descubre cual es la mejor opción para ti.
@@ -599,7 +585,7 @@
       </div>
 
       <!-- Spline Animation Section with Fallback on the Right -->
-      <div id="cubesanimation" class="w-1/2 h-[500px] flex justify-center items-center mx-8 relative" style="pointer-events: none;">
+      <div id="cubesanimation" class=" h-[500px] flex justify-center items-center mx-8 relative" style="pointer-events: none;">
         <!-- Fallback Image, shown by default -->
         <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/wallet-choice-animation.webp" 
              alt="Wallet Choice Placeholder" 
@@ -641,62 +627,62 @@
     </div>
   </section>
 
-<!-- Blockchain Section with Parallax Background -->
-<section id="blockchain" class="relative bg-gray-900 py-16">
+  <!-- Blockchain Section with Parallax Background -->
+  <section id="blockchain" class="relative bg-gray-900 py-16">
 
-  <!-- Glassy Overlay -->
-  <div class="relative bg-white bg-opacity-10 backdrop-blur-lg py-16">
-    <div class="container mx-auto flex flex-col items-center text-center">
-      <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none mb-6" style="font-family: 'Oswald', sans-serif;">
-        Como funciona Bitcoin
-      </h2>
+    <!-- Glassy Overlay -->
+    <div class="relative bg-white bg-opacity-10 backdrop-blur-lg py-16">
+      <div class="container mx-auto flex flex-col items-center text-center">
+        <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none mb-6" style="font-family: 'Oswald', sans-serif;">
+          Como funciona Bitcoin
+        </h2>
 
-      <div class="w-3/4 text-white text-lg mb-6">
-        <p>Bitcoin es un sistema descentralizado que asegura la transparencia y la seguridad de las transacciones.</p>
+        <div class="w-3/4 text-white text-lg mb-6">
+          <p>Bitcoin es un sistema descentralizado que asegura la transparencia y la seguridad de las transacciones.</p>
+        </div>
+      
+        <div class="w-3/4 text-white text-lg mb-6">
+          <p>Cada bloque en la cadena contiene datos únicos que son validados por una red distribuida de nodos.</p>
+        </div>
+
+        <div class="w-3/4 text-white text-lg mb-6">
+          <p>Bitcoin está revolucionando industrias como la logística, las finanzas y la identidad digital, ofreciendo soluciones innovadoras a problemas antiguos.</p>
+        </div>
+
+        <a target="_blank" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" 
+          class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
+          Aprende más sobre Bitcoin
+        </a>
       </div>
-    
-      <div class="w-3/4 text-white text-lg mb-6">
-        <p>Cada bloque en la cadena contiene datos únicos que son validados por una red distribuida de nodos.</p>
-      </div>
-
-      <div class="w-3/4 text-white text-lg mb-6">
-        <p>Bitcoin está revolucionando industrias como la logística, las finanzas y la identidad digital, ofreciendo soluciones innovadoras a problemas antiguos.</p>
-      </div>
-
-      <a target="_blank" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" 
-         class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
-        Aprende más sobre Bitcoin
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<script>
-  document.querySelectorAll('.cta-button').forEach(button => {
-  button.addEventListener('click', (event) => {
-    console.log('CTA button clicked:', event.target);
+  <script>
+    document.querySelectorAll('.cta-button').forEach(button => {
+    button.addEventListener('click', (event) => {
+      console.log('CTA button clicked:', event.target);
+    });
   });
-});
-document.addEventListener('click', (event) => {
-  console.log('Element clicked:', event.target);
-});
-</script>
+  document.addEventListener('click', (event) => {
+    console.log('Element clicked:', event.target);
+  });
+  </script>
 
 <!-- Footer -->
-<footer id="contact-form" class="bg-black opacity-0.5 py-8 text-white">
-  <video autoplay muted loop playsinline id="footer-video">
+<footer id="contact-form" class="bg-black opacity-50 py-8 text-white relative">
+  <video autoplay muted loop playsinline id="footer-video" class="mt-20">
     <source src="https://miguelklagges.com/wp-content/uploads/2024/10/footerbackground.webm" type="video/webm">
     Your browser does not support the video tag.
-</video>
-<!-- Black Tint Overlay -->
-<div id="footer-tint-overlay"></div>  
+  </video>
+  <!-- Black Tint Overlay -->
+  <div id="footer-tint-overlay" class="hidden"></div>  
 
   <div class="container mx-auto px-4 flex flex-wrap">
     <!-- Left Section: Contact Form -->
     <div class="w-full md:w-1/3 mb-6 md:mb-0">
       
-      <form action="#" method="POST">
+      <form action="form-processor.php" method="POST">
         <!-- Name Field -->
         <input id="field" type="text" name="name" placeholder="Tu nombre" class="w-full p-2 mb-4 bg-gray-800 text-white border border-gray-600 rounded" required>
 
@@ -711,10 +697,14 @@ document.addEventListener('click', (event) => {
           Hablemos de Bitcoin
         </button>
       </form>
+      <!-- Mostrar mensaje de confirmación -->
+      <?php if (!empty($mensajeConfirmacion)) { ?>
+        <p><?php echo $mensajeConfirmacion; ?></p>
+      <?php } ?>
     </div>
 
     <!-- Right Section: Logo and Social Media Links -->
-    <div class="w-full md:w-2/3 text-center md:text-right">
+    <div class="w-full md:w-2/3 flex flex-col text-center md:text-right">
       <!-- Logo Section -->
       <div class="mb-4">
         <img src="https://miguelklagges.com/wp-content/uploads/2024/10/Miguel-Klagges-Initials_white_high-res-4.png" alt="Miguel Klagges Logo" class="inline-block h-12">
@@ -725,19 +715,19 @@ document.addEventListener('click', (event) => {
         <a target="_blank" href="https://instagram.com/miguel.klagges/" class="mx-2 text-white hover:text-gray-400">
           <i class="fab fa-discord"></i> Instagram
         </a>
-        <a target="_blank"  href="https://nostr.com/?" class="mx-2 text-white hover:text-gray-400">
+        <a target="_blank" href="https://nostr.com/?" class="mx-2 text-white hover:text-gray-400">
           <i class="fab fa-nostr"></i> Nostr
         </a>
         <a target="_blank" href="https://www.orangepillapp.com/" class="mx-2 text-white hover:text-gray-400">
           <i class="fas fa-circle"></i> OrangePill App
         </a>
-        <a target="_blank" href="https://web.telegram.org/a/" class="mx-2 text-white hover:text-gray-400"></a>
+        <a target="_blank" href="https://web.telegram.org/a/" class="mx-2 text-white hover:text-gray-400">
           <i class="fa fa-telegram" aria-hidden="true"></i> Telegram
         </a>
       </div>
 
       <!-- Copyright Text -->
-      <div class="text-sm text-gray-400">
+      <div class="mt-auto text-sm text-gray-400">
         © 2024 Miguel Klagges. All Rights Reserved.
       </div>
     </div>
@@ -745,30 +735,17 @@ document.addEventListener('click', (event) => {
 </footer>
 </div>
 
-     <!-- Full-screen Overlay Menu -->
-<div id="mobileMenu" class="fixed inset-0 bg-black h-100vh bg-opacity-90 opacity-0 transition-opacity duration-300 z-30" style="display: none; pointer-events: none">
-  <!-- Close Button -->
-  <button id="closeButton" class="absolute top-10 right-20 text-white text-3xl cursor-pointer focus:outline-none">×</button>
-
- <nav class="flex items-center justify-around h-full w-full">
-   <ul class="text-center space-y-6 text-2xl text-white leading-relaxed">
-     <li><a target="_blank" href="https://miguelklagges.instawp.xyz/blog-de-ejemplo/" class="hover:text-gray-400 font-raleway font-medium">Blog</a></li>
-     <li><a href="#asistencia" id="asistButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Servicios</a></li>
-     <li><a href="#blockchain" id="blockButton" class="scroll-link hover:text-gray-400 font-raleway font-medium">Sobre Blockchain</a></li>
-     <li><a href="#contact-form" id="contactButton"class="scroll-link hover:text-gray-400 font-raleway font-medium">Contacto</a></li>
-   </ul>
- </nav>
-</div>
+   
 </div>
 <!-- External Libraries -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
 
-<script src="js/videoLazyLoad.js"></script> <!-- independent lazy load -->
 <script src="js/smoothImageTextLoad.js"></script> <!-- likely independent too -->
 <script src="js/btcPrice.js"></script> <!-- depends on #btc-price-value element -->
 <script src="js/bio.js"></script> <!-- might rely on #bio-text elements -->
 <script src="js/menuToggle.js"></script> <!-- controls menu elements, likely global -->
 <script src="js/timeline.js"></script> <!-- Ensure it is last if needed -->
+<script src="js/videoLazyLoad.js"></script> <!-- independent lazy load -->
 
 <!-- Inline Script for Bio Section Fade-in Animation -->
 <script>
