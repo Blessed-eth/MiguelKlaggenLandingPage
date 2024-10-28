@@ -1,6 +1,7 @@
 /* General Rule: Lower Z-Index for All Elements Except Specific Interactive/Animated Elements */
 body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-section):not(.hero-section *):not(#hero-text *):not(#bottomnav) {
     z-index: 1;
+    
 }
   
   /* CTA Buttons Above All Background Elements */
@@ -12,7 +13,7 @@ body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-s
   
 
   #fund-recovery {
-    background-color: white; /* Base color in case animation fails */
+
     background-image: url('/deepmindanimation/optimizedvideos/frame-000000.webp'); /* Initial frame as fallback */
     background-size: cover;
     background-position: center;

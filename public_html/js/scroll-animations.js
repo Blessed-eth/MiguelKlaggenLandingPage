@@ -1,16 +1,29 @@
-// Animation settings for different sections
-const totalTimelineFrames = 136;
+// Animation settings for the fund-recovery section
 const totalFundRecoveryFrames = 408;
-const timelineFolder = '/timelinebackground/optimizedvideos/';
-const fundRecoveryFolder = '/deepmindanimation/optimizedvideos/';
+const fundRecoveryFolder = 'https://miguelklagges.com/publicmedia/deepmindanimation/optimizedvideo/';
+
+// Store the last loaded frame URL to prevent any empty background
+let lastLoadedFundRecoveryFrameUrl = `${fundRecoveryFolder}frame-000000.webp`; // Start with the first frame
 
 // Helper function to set background images based on frame index
 function setBackgroundImage(section, folder, frameIndex) {
     const imagePath = `${folder}frame-${String(frameIndex).padStart(6, '0')}.webp`;
-    section.style.backgroundImage = `url('${imagePath}')`;
+
+    const img = new Image();
+    img.src = imagePath;
+
+    img.onload = () => {
+        section.style.backgroundImage = `url('${imagePath}')`;
+        lastLoadedFundRecoveryFrameUrl = imagePath;  // Update the last loaded frame URL
+    };
+
+    img.onerror = () => {
+        // If the new frame fails to load, keep showing the last successfully loaded frame
+        section.style.backgroundImage = `url('${lastLoadedFundRecoveryFrameUrl}')`;
+    };
 }
 
-// Preload all frames for smoother transitions
+// Preload frames for smoother transitions
 function preloadFrames(folder, totalFrames) {
     for (let i = 0; i < totalFrames; i++) {
         const img = new Image();
@@ -18,55 +31,32 @@ function preloadFrames(folder, totalFrames) {
     }
 }
 
-// Preload frames for the fund recovery section
+// Preload frames for the fund-recovery section
 preloadFrames(fundRecoveryFolder, totalFundRecoveryFrames);
 
-// Scroll event listener for animations
+// Scroll event listener for fund-recovery section animation
 document.addEventListener('scroll', () => {
-    // Timeline Section Animation
-    const timelineSection = document.getElementById('cd-timeline');
-    if (timelineSection) {
-        const sectionTop = timelineSection.getBoundingClientRect().top;
-        const sectionHeight = timelineSection.offsetHeight;
-        const viewportHeight = window.innerHeight;
-
-        if (sectionTop <= viewportHeight && sectionTop + sectionHeight >= 0) {
-            const scrollFraction = Math.min(1, Math.abs(sectionTop) / (sectionHeight + viewportHeight));
-            const frameIndex = Math.floor(scrollFraction * (totalTimelineFrames - 1));
-            setBackgroundImage(timelineSection, timelineFolder, frameIndex);
-        }
-    }
-
-    // Fund Recovery Section Animation
     const fundRecoverySection = document.getElementById('fund-recovery');
-    const containerInside = fundRecoverySection.querySelector('.container');
 
     if (fundRecoverySection) {
-        const sectionTop = fundRecoverySection.getBoundingClientRect().top;
-        const sectionHeight = fundRecoverySection.offsetHeight;
+        const sectionTop = fundRecoverySection.getBoundingClientRect().top + window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
         const viewportHeight = window.innerHeight;
 
-        // Display animation frames when section is in view
-        if (sectionTop <= viewportHeight && sectionTop + sectionHeight >= 0) {
-            const scrollFraction = Math.min(1, Math.abs(sectionTop) / (sectionHeight - viewportHeight));
-            const frameIndex = Math.floor(scrollFraction * (totalFundRecoveryFrames - 1));
-            setBackgroundImage(fundRecoverySection, fundRecoveryFolder, frameIndex);
+        // Calculate scroll fraction based on total scrollable height to the bottom of the page
+        const maxScrollDistance = documentHeight - sectionTop - viewportHeight;
+        const scrollPosition = window.scrollY - sectionTop;
+        const scrollFraction = Math.min(1, scrollPosition / maxScrollDistance);
 
-            // Keep the section sticky while playing the animation
-            containerInside.style.position = 'sticky';
-            containerInside.style.top = '0';
-        } else {
-            // Keep the last frame as the background when out of view
-            setBackgroundImage(fundRecoverySection, fundRecoveryFolder, totalFundRecoveryFrames - 1);
-            containerInside.style.position = 'relative';
-        }
+        const frameIndex = Math.floor(scrollFraction * (totalFundRecoveryFrames - 1));
+
+        // Update the background to the current frame or the last loaded frame
+        setBackgroundImage(fundRecoverySection, fundRecoveryFolder, frameIndex);
     }
 });
 
 // Navbar fade-out on footer visibility
 const bottomNav = document.getElementById('bottomnav');
-const footer = document.querySelector('footer');
-
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -77,4 +67,4 @@ const observer = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.1 });
 
-observer.observe(footer);
+observer.observe(document.querySelector('footer'));

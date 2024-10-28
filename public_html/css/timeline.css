@@ -1,9 +1,43 @@
-/* Timeline styling */
+/* Timeline Section with Gradient and Background Image */
 .timeline-section {
+  position: relative;
   padding-top: 0;
   margin-top: 0;
-  position: relative;
   padding-bottom: 0;
+  overflow: hidden;
+  min-height: 100vh; /* Ensure it covers full viewport height */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.timeline-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/DSC4224-scaled.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  pointer-events: none; /* Ensures it doesn’t interfere with clicks */
+  z-index: 1; /* Adjust to make sure it's above background elements but behind content */
+}
+
+/* Background Image with Parallax Effect */
+#cd-timeline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/background_timeline_frame-scaled.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.7;
+  z-index: -1;
+  
 }
 
 /* Ensure full height and proper background display */
@@ -134,4 +168,76 @@
   .glass-card p {
     font-size: 1.125rem; /* 18px on tablet */
   }
+}
+
+/* Timeline animation */
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  
+  width: 2px; /* Line thickness */
+  height: 100%;
+  z-index: 0; /* Position behind timeline content */
+  background-color: transparent;
+}
+
+.item {
+  cursor: pointer;
+  display: flex;
+  transition: all 0.2s ease-in-out;
+  padding: 6px 0;
+  position: relative;
+  z-index: 200;
+}
+
+.item::before {
+  content: "";
+  background-color: #ccc;
+  border-radius: 3px;
+  display: block;
+  height: 2px;
+  margin: 0 auto;
+  transition: all 0.2s ease-in-out;
+  width: 40px;
+}
+
+.item:hover {
+  padding: 4px 0;
+}
+
+.item:hover::before {
+  height: 6px;
+  width: 72px;
+}
+
+.item:hover .year {
+  opacity: 1;
+}
+
+.item:has(+ .item:hover),
+.item:hover + .item {
+  padding: 5px 0;
+}
+
+.item:has(+ .item:hover)::before,
+.item:hover + .item::before {
+  height: 4px;
+  width: 56px;
+}
+
+.year {
+  color: #ccc;
+  font-family: system-ui;
+  font-size: 12px;
+  opacity: 0;
+  position: absolute;
+  right: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.4s ease-in-out;
+  user-select: none;
 }
