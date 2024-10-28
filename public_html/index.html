@@ -40,13 +40,12 @@
   }
 </script>
 
-<!--  Simple Parallax -->
-<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.0/dist/simpleParallax.min.js"></script>
 
   <!--  Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 </head>
 <div class="main-content">
 <body class="bg-black text-white overflow-x-hidden">
@@ -101,7 +100,8 @@
 
    <!-- Sliding Text (looping) -->
    <div class="absolute  md:top-1/6 left-0 w-full h-full flex justify-center items-center overflow-hidden">
-    <div id="hero-text" class="font-bold text-white opacity-90 whitespace-nowrap text-scroll transition-opacity duration-1000 bg-gradient-to-r from-gray-100 to-gray-700 bg-clip-text mix-blend-overlay text-4xl md:text-[20rem] lg:text-[30rem]">
+    <div id="hero-text" class="font-bold text-white opacity-90 whitespace-nowrap text-scroll transition-opacity duration-1000 bg-gradient-to-r from-gray-100 to-gray-700 bg-clip-text mix-blend-overlay text-4xl md:text-[20rem] lg:text-[30rem]" style="font-family: 'Playfair Display', serif;">
+
       <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span>
       <span class="mx-1 inline-block z-1">El futuro es Bitcoiner</span> <!-- Repeating for smooth scrolling -->
     </div>
@@ -166,16 +166,35 @@
     <span>Soy</span> <span>Miguel</span> <span>Klagges,</span>
   </p>
   <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
-    <span>pionero</span> <span>en</span> <span>Bitcoin</span> <span>y</span> <span>Blockchain</span> <span>en</span> <span>Chile,</span>
+    <span>pionero</span> <span>en</span> <span>construir</span> <span>comunidad</span> <span>Bitcoin</span> <span>en</span> <span>Chile,</span>
   </p>
   <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
     <span>con</span> <span>más</span> <span>de</span> <span>10</span> <span>años</span> <span>de</span> <span>experiencia</span>
   </p>
   <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
-    <span>ayudando</span> <span>a</span> <span>empresas,</span> <span>emprendedores</span> <span>e</span> <span>instituciones</span>
+    <span>ayudando</span> 
+    <span>a</span> 
+    <span>empresas</span> 
+    <span>e</span> 
+    <span>instituciones</span> 
   </p>
   <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
-    <span>a</span> <span>implementar</span> <span>soluciones</span> <span>innovadoras</span> <span>de</span> <span>criptotecnologías.</span>
+    <span>a</span> 
+    <span>tener</span> 
+    <span>una</span> 
+    <span>mejor</span> 
+    <span>comprensión</span> 
+    <span>de</span> 
+    <span>lo</span> 
+    <span>que</span> 
+    <span>implica</span> 
+    <span>esta</span> 
+  </p>
+  <p class="text-sm md:text-lg lg:text-xl font-light font-raleway tracking-wide">
+  <span>revolución</span> 
+    <span>de</span> 
+    <span>las</span> 
+    <span>finanzas.</span>
   </p>
 </section>
 
@@ -225,7 +244,9 @@
 
 <!-- Timeline Section -->
 <div id="cd-timeline" class="relative py-16 mt-20 timeline-section"> 
-    
+      <!-- Include the scroll-animations.html script as an iframe -->
+<iframe src="scroll-animations.html"></iframe>
+
   <!-- Central vertical line -->
   <div class="absolute left-1/2 transform -translate-x-1/2 top-0 h-full w-1 bg-white"></div>
 
@@ -258,7 +279,7 @@
       <img src="https://miguelklagges.com/wp-content/uploads/2024/10/favicon-1.png" alt="Favicon" class="w-full h-full object-contain">
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 mr-auto md:ml-8 fade-in-left mt-20" style="margin-top: 4rem;">
-      <h2 class="text-lg md:text-xl font-bold text-white">Más de 10 años de experiencia en Bitcoin y Blockchain</h2>
+      <h2 class="text-lg md:text-xl font-bold text-white">Más de 10 años de experiencia en Bitcoin</h2>
       <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
@@ -269,7 +290,7 @@
       <img src="https://miguelklagges.com/wp-content/uploads/2024/10/bitcoin-chile-3.png" alt="Bitcoin Flag" class="w-full h-full object-contain">
     </div>
     <div id="card" class="glass-card shadow-lg p-6 w-3/4 md:w-2/4 lg:w-1/3 ml-auto md:mr-8 fade-in-right mt-20" style="margin-top: 8rem;">
-      <h2 class="text-lg md:text-xl font-bold text-white">Pionero en construir comunidad de criptotecnologías en Chile</h2>
+      <h2 class="text-lg md:text-xl font-bold text-white">Pionero en construir comunidad Bitcoin en Chile</h2>
       <p class="hidden text-white mt-2 text-base md:text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
@@ -319,7 +340,8 @@
   </div>
 </div>
 
-<!-- Vertical Layout -->
+<!-- Transition Section for Second Animation -->
+<div class="second-animation-transition-section h-screen"></div>
 
   <!-- Asistencia Section -->
   <section id="asistencia" class="relative text-white lg:bg-fixed py-16 w-screen inline-block">
@@ -367,7 +389,7 @@
           Como escoger una <br> Billetera Crypto
         </h2>
         <p class="text-lg text-white mt-4">
-          ¿Sabías que elegir la billetera correcta puede ser la clave <br>para proteger tus criptos? Descubre cual es la mejor opción para ti.
+          ¿Sabías que elegir la billetera correcta puede ser la clave <br>para proteger tus Bitcoins? Descubre cual es la mejor opción para ti.
         </p>
 
         <!-- CTA Button -->
@@ -406,7 +428,7 @@
         <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold leading-none" style="font-family: 'Oswald', sans-serif;">
           Recuperación de <br> fondos extraviados
         </h2>
-        <p class="text-lg text-white mt-4">¿Perdiste acceso a tus fondos o criptomonedas? Te ayudamos a recuperarlos.</p>
+        <p class="text-lg text-white mt-4">¿Perdiste acceso a tu billetera? Te ayudamos a recuperarlos.</p>
 
         <!-- Call to Action Button -->
         <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" class="cta-button mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
@@ -417,22 +439,21 @@
   </section>
 </div>
 
+<!-- Transition Section for Third Animation -->
+<div class="third-animation-transition-section h-screen"></div>
+
 <!-- Blockchain Section with Parallax Background -->
 <section id="blockchain" class="relative bg-gray-900 py-16">
-  <!-- Parallax Image -->
-  <img src="https://miguelklagges.instawp.xyz/wp-content/uploads/2024/10/DSC4224-scaled.webp" 
-       alt="Blockchain Background" 
-       class="parallax-image absolute inset-0 w-full h-full object-cover opacity-70 z-[-1]">
 
   <!-- Glassy Overlay -->
   <div class="relative bg-white bg-opacity-10 backdrop-blur-lg py-16">
     <div class="container mx-auto flex flex-col items-center text-center">
       <h2 class="text-[28px] sm:text-[40px] md:text-[60px] lg:text-[80px] font-bold text-white leading-none mb-6" style="font-family: 'Oswald', sans-serif;">
-        Como funciona la Blockchain
+        Como funciona Bitcoin
       </h2>
 
       <div class="w-3/4 text-white text-lg mb-6">
-        <p>Blockchain es un sistema descentralizado que asegura la transparencia y la seguridad de las transacciones.</p>
+        <p>Bitcoin es un sistema descentralizado que asegura la transparencia y la seguridad de las transacciones.</p>
       </div>
     
       <div class="w-3/4 text-white text-lg mb-6">
@@ -440,12 +461,12 @@
       </div>
 
       <div class="w-3/4 text-white text-lg mb-6">
-        <p>Además de su uso en criptomonedas, blockchain está revolucionando industrias como la logística, las finanzas y la identidad digital, ofreciendo soluciones innovadoras a problemas antiguos.</p>
+        <p>Bitcoin está revolucionando industrias como la logística, las finanzas y la identidad digital, ofreciendo soluciones innovadoras a problemas antiguos.</p>
       </div>
 
       <a target="_blank" href="https://miguelklagges.com/2024/10/25/blog-1/" 
          class="mt-8 inline-block bg-yellow-500 text-black py-2 px-6 rounded-lg hover:bg-yellow-600 transition">
-        Aprende más sobre Blockchain
+        Aprende más sobre Bitcoin
       </a>
     </div>
   </div>
@@ -495,14 +516,17 @@ document.addEventListener('click', (event) => {
 
       <!-- Social Media Links -->
       <div class="mb-4">
-        <a href="https://discord.com" class="mx-2 text-white hover:text-gray-400">
-          <i class="fab fa-discord"></i> Discord
+        <a href="https://instagram.com/miguel.klagges/" class="mx-2 text-white hover:text-gray-400">
+          <i class="fab fa-discord"></i> Instagram
         </a>
-        <a href="https://linkedin.com" class="mx-2 text-white hover:text-gray-400">
-          <i class="fab fa-linkedin"></i> LinkedIn
+        <a href="https://nostr.com/?" class="mx-2 text-white hover:text-gray-400">
+          <i class="fab fa-linkedin"></i> Nostr
         </a>
-        <a href="https://luma.com" class="mx-2 text-white hover:text-gray-400">
-          <i class="fas fa-circle"></i> Luma
+        <a href="https://www.orangepillapp.com/" class="mx-2 text-white hover:text-gray-400">
+          <i class="fas fa-circle"></i> OrangePill App
+        </a>
+        <a href="https://luma.com" class="mx-2 text-white hover:text-gray-400"></a>
+          <i class="fas fa-circle"></i> Telegram
         </a>
       </div>
 
@@ -612,7 +636,7 @@ document.addEventListener('click', (event) => {
   setInterval(fetchBTCPrice, 60000); // Fetch every 60 seconds
 }
 </script>
-
+<script src="./js/scroll-animations.js"></script>
 </body>
 
 </html>

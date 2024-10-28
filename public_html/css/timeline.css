@@ -7,6 +7,13 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 100%, rgb(0, 0, 0, 0) 100%);
 }
 
+/* Ensure full height and proper background display */
+#cd-timeline {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
 /* Initial hidden state for timeline blocks */
 .cd-timeline-block {
   opacity: 0;

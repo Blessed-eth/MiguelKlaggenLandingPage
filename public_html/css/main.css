@@ -60,3 +60,11 @@ body *:not(#mobileMenu):not(header):not(#hero-text):not(.cta-button):not(.hero-s
   .hidden {
     display: none !important;
   }
+  .second-animation-transition-section {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
